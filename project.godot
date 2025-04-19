@@ -10,11 +10,21 @@ config_version=5
 
 [application]
 
-config/name="Beachway_Surfer"
+config/name="Beachway Surfer"
 config/description="Become a shark, bite people, eat seagulls and fishes befure your hunger bar runs out
 "
+run/main_scene="uid://d3446qnhg3cxc"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://pcyb2866jt86"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [editor]
 
@@ -23,5 +33,6 @@ version_control/autoload_on_startup=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
