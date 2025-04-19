@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://clfapo5m0cwko"
+path="res://.godot/imported/Edvard Grieg_ Peer Gynt - Morning Mood.mp3-89decc4596da48ff3848c1efa3c4b747.mp3str"
+
+[deps]
+
+source_file="res://music/menu/Edvard Grieg_ Peer Gynt - Morning Mood.mp3"
+dest_files=["res://.godot/imported/Edvard Grieg_ Peer Gynt - Morning Mood.mp3-89decc4596da48ff3848c1efa3c4b747.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

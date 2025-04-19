@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yihnre53u51x"
+path="res://.godot/imported/String Quintet in E Major, Op. 11, No. 5, G. 275_ III. Minuetto.mp3-2d356d7f3f79716fdc6fdb98a324b957.mp3str"
+
+[deps]
+
+source_file="res://music/menu/String Quintet in E Major, Op. 11, No. 5, G. 275_ III. Minuetto.mp3"
+dest_files=["res://.godot/imported/String Quintet in E Major, Op. 11, No. 5, G. 275_ III. Minuetto.mp3-2d356d7f3f79716fdc6fdb98a324b957.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
