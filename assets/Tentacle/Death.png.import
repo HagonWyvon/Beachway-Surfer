@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u7rrx1xug8gs"
-path="res://.godot/imported/Walk.png-85da3322d9ec08373f3b9df27cdadbc0.ctex"
+uid="uid://dhq451v2mf6h7"
+path="res://.godot/imported/Death.png-ac4fde21bf6a3f83eb789ef608ab0329.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2/Walk.png"
-dest_files=["res://.godot/imported/Walk.png-85da3322d9ec08373f3b9df27cdadbc0.ctex"]
+source_file="res://assets/Tentacle/Death.png"
+dest_files=["res://.godot/imported/Death.png-ac4fde21bf6a3f83eb789ef608ab0329.ctex"]
 
 [params]
 

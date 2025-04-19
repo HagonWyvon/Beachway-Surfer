@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v45x7yxcv5g5"
-path="res://.godot/imported/Death.png-c3d50c59c7bdbbd6e93d24bfa498739b.ctex"
+uid="uid://nebvbqmj18h"
+path="res://.godot/imported/Death.png-ebd48fbfc8593fe35736500b03b07302.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/3/Death.png"
-dest_files=["res://.godot/imported/Death.png-c3d50c59c7bdbbd6e93d24bfa498739b.ctex"]
+source_file="res://assets/Turtle/Death.png"
+dest_files=["res://.godot/imported/Death.png-ebd48fbfc8593fe35736500b03b07302.ctex"]
 
 [params]
 

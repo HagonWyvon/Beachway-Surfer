@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4c0t2ctg7ful"
-path="res://.godot/imported/Idle.png-9661e81175878b424c5e50f77fc08d5e.ctex"
+uid="uid://b76pt0ick1lb"
+path="res://.godot/imported/Attack.png-baf2509c88ccadb5ed4c3469c95e4f32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/6/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-9661e81175878b424c5e50f77fc08d5e.ctex"]
+source_file="res://assets/Turtle/Attack.png"
+dest_files=["res://.godot/imported/Attack.png-baf2509c88ccadb5ed4c3469c95e4f32.ctex"]
 
 [params]
 
