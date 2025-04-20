@@ -1,5 +1,11 @@
 extends Area2D
 
+signal hit
+
+func start(pos):
+	position = pos
+	show()
+	$Hitbox.disabled = false
 
 func _ready():
 	pass
