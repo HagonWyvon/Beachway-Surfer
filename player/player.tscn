@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d3446qnhg3cxc"]
+[gd_scene load_steps=29 format=3 uid="uid://d3446qnhg3cxc"]
 
 [ext_resource type="Texture2D" uid="uid://xr6kkdp3xpmn" path="res://assets/enemies_and_player/Shark/Attack.png" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://v45x7yxcv5g5" path="res://assets/enemies_and_player/Shark/Death.png" id="2_yw30f"]
@@ -7,6 +7,11 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kqu6x"]
 height = 46.0
+
+[sub_resource type="Gradient" id="Gradient_yw30f"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qjkh3"]
+gradient = SubResource("Gradient_yw30f")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkbax"]
 atlas = ExtResource("1_oul6g")
@@ -174,15 +179,22 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="Area2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kqu6x")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Mask" type="Sprite2D" parent="."]
+clip_children = 1
+rotation = 1.5708
+texture = SubResource("GradientTexture2D_qjkh3")
+offset = Vector2(-20, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mask"]
+position = Vector2(-1, 0)
+rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_oul6g")
-animation = &"sharkAttack"
-frame = 6
-frame_progress = 1.0
+animation = &"sharkWalk"
+frame_progress = 0.13958

@@ -8,7 +8,13 @@
 script/source = "extends RigidBody2D
 
 func _ready():
-	pass
+	var bird_types = Array($birdskin.sprite_frames.get_animation_names())
+	$birdskin.animation = bird_types.pick_random()
+
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wnjls"]
@@ -199,7 +205,7 @@ collision_mask = 0
 gravity_scale = 0.0
 script = SubResource("GDScript_l42xp")
 
-[node name="skin" type="AnimatedSprite2D" parent="."]
+[node name="birdskin" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8u0fc")
 animation = &"crow"
 
@@ -211,3 +217,5 @@ metadata/_edit_group_ = true
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, 1)
 metadata/_edit_group_ = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
