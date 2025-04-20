@@ -171,7 +171,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"sharkWalk",
-"speed": 7.0
+"speed": 6.0
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
@@ -183,6 +183,6 @@ shape = SubResource("CapsuleShape2D_kqu6x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oul6g")
-animation = &"sharkWalk"
-autoplay = "sharkWalk"
-frame_progress = 0.163261
+animation = &"sharkAttack"
+frame = 6
+frame_progress = 1.0
