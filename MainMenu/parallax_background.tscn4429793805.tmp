@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo6bkuh2emu7i"]
+
+[ext_resource type="Script" uid="uid://cjoyxaptg3vwl" path="res://GDscripts/bluesky_background.gd" id="1_jbber"]
+[ext_resource type="Texture2D" uid="uid://bjicfno0h0gak" path="res://assets/Background/Clouds/Clouds 1/1.png" id="2_mvq4b"]
+
+[node name="parallaxBackground" type="Node"]
+script = ExtResource("1_jbber")
+
+[node name="blueskyBackground" type="ParallaxBackground" parent="."]
+auto_translate_mode = 1
+
+[node name="bluesky" type="ParallaxLayer" parent="blueskyBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="blueskyBackground/bluesky"]
+texture = ExtResource("2_mvq4b")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="blueskyBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="blueskyBackground/ParallaxLayer2"]
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="blueskyBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="blueskyBackground/ParallaxLayer3"]

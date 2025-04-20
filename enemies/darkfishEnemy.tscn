@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3 uid="uid://daayvqmd3isp6"]
 
-[ext_resource type="Texture2D" uid="uid://ckjbhy2b5nvjf" path="res://assets/darkfish/Death.png" id="1_igaka"]
-[ext_resource type="Texture2D" uid="uid://b5qt6uv4kysp0" path="res://assets/darkfish/Idle.png" id="1_j16nj"]
-[ext_resource type="Texture2D" uid="uid://di7ys1kjr4i5j" path="res://assets/darkfish/Hurt.png" id="1_vu3mj"]
-[ext_resource type="Texture2D" uid="uid://6yjnup6fxcna" path="res://assets/darkfish/Walk.png" id="2_xsp8f"]
+[ext_resource type="Texture2D" uid="uid://ckjbhy2b5nvjf" path="res://assets/enemies_and_player/darkfish/Death.png" id="1_igaka"]
+[ext_resource type="Texture2D" uid="uid://b5qt6uv4kysp0" path="res://assets/enemies_and_player/darkfish/Idle.png" id="1_j16nj"]
+[ext_resource type="Texture2D" uid="uid://di7ys1kjr4i5j" path="res://assets/enemies_and_player/darkfish/Hurt.png" id="1_vu3mj"]
+[ext_resource type="Texture2D" uid="uid://6yjnup6fxcna" path="res://assets/enemies_and_player/darkfish/Walk.png" id="2_xsp8f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8x3f5"]
 height = 32.0

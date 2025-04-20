@@ -1,9 +1,9 @@
 [gd_scene load_steps=25 format=3 uid="uid://eok3eaquco03"]
 
-[ext_resource type="Texture2D" uid="uid://nebvbqmj18h" path="res://assets/Turtle/Death.png" id="1_rr8x6"]
-[ext_resource type="Texture2D" uid="uid://b0rqgkp57fmie" path="res://assets/Turtle/Hurt.png" id="2_tlpy2"]
-[ext_resource type="Texture2D" uid="uid://c06gvgj6seevj" path="res://assets/Turtle/Idle.png" id="3_bnbvn"]
-[ext_resource type="Texture2D" uid="uid://u7rrx1xug8gs" path="res://assets/Turtle/Walk.png" id="4_jloqa"]
+[ext_resource type="Texture2D" uid="uid://nebvbqmj18h" path="res://assets/enemies_and_player/Turtle/Death.png" id="1_rr8x6"]
+[ext_resource type="Texture2D" uid="uid://b0rqgkp57fmie" path="res://assets/enemies_and_player/Turtle/Hurt.png" id="2_tlpy2"]
+[ext_resource type="Texture2D" uid="uid://c06gvgj6seevj" path="res://assets/enemies_and_player/Turtle/Idle.png" id="3_bnbvn"]
+[ext_resource type="Texture2D" uid="uid://u7rrx1xug8gs" path="res://assets/enemies_and_player/Turtle/Walk.png" id="4_jloqa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tlpy2"]
 atlas = ExtResource("1_rr8x6")

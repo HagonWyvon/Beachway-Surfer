@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3 uid="uid://cgorpvemdd8wu"]
 
-[ext_resource type="Texture2D" uid="uid://ugrgopdct4dg" path="res://assets/jelly/Idle.png" id="1_1dvrh"]
-[ext_resource type="Texture2D" uid="uid://cgegsqg03hcqv" path="res://assets/jelly/Hurt.png" id="1_jhokn"]
-[ext_resource type="Texture2D" uid="uid://b8fvmqis45civ" path="res://assets/jelly/Death.png" id="1_pyvgs"]
-[ext_resource type="Texture2D" uid="uid://otffg445r1qe" path="res://assets/jelly/Walk.png" id="4_0t7ou"]
+[ext_resource type="Texture2D" uid="uid://ugrgopdct4dg" path="res://assets/enemies_and_player/jelly/Idle.png" id="1_1dvrh"]
+[ext_resource type="Texture2D" uid="uid://cgegsqg03hcqv" path="res://assets/enemies_and_player/jelly/Hurt.png" id="1_jhokn"]
+[ext_resource type="Texture2D" uid="uid://b8fvmqis45civ" path="res://assets/enemies_and_player/jelly/Death.png" id="1_pyvgs"]
+[ext_resource type="Texture2D" uid="uid://otffg445r1qe" path="res://assets/enemies_and_player/jelly/Walk.png" id="4_0t7ou"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjcd5"]
 atlas = ExtResource("1_pyvgs")

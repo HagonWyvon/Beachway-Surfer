@@ -1,9 +1,9 @@
 [gd_scene load_steps=27 format=3 uid="uid://d3446qnhg3cxc"]
 
-[ext_resource type="Texture2D" uid="uid://xr6kkdp3xpmn" path="res://assets/Shark/Attack.png" id="1_oul6g"]
-[ext_resource type="Texture2D" uid="uid://v45x7yxcv5g5" path="res://assets/Shark/Death.png" id="2_yw30f"]
-[ext_resource type="Texture2D" uid="uid://du7gjckhsu4b1" path="res://assets/Shark/Idle.png" id="3_qjkh3"]
-[ext_resource type="Texture2D" uid="uid://b1i2upl04kdig" path="res://assets/Shark/Walk.png" id="4_g6k8r"]
+[ext_resource type="Texture2D" uid="uid://xr6kkdp3xpmn" path="res://assets/enemies_and_player/Shark/Attack.png" id="1_oul6g"]
+[ext_resource type="Texture2D" uid="uid://v45x7yxcv5g5" path="res://assets/enemies_and_player/Shark/Death.png" id="2_yw30f"]
+[ext_resource type="Texture2D" uid="uid://du7gjckhsu4b1" path="res://assets/enemies_and_player/Shark/Idle.png" id="3_qjkh3"]
+[ext_resource type="Texture2D" uid="uid://b1i2upl04kdig" path="res://assets/enemies_and_player/Shark/Walk.png" id="4_g6k8r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kqu6x"]
 height = 46.0

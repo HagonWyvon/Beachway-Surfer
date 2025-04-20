@@ -1,9 +1,9 @@
 [gd_scene load_steps=27 format=3 uid="uid://bf2265hnlxpdq"]
 
-[ext_resource type="Texture2D" uid="uid://4c0t2ctg7ful" path="res://assets/octopus/Idle.png" id="1_lo6s5"]
-[ext_resource type="Texture2D" uid="uid://dhq451v2mf6h7" path="res://assets/octopus/Death.png" id="1_qjmah"]
-[ext_resource type="Texture2D" uid="uid://b8gipfucpkdhp" path="res://assets/octopus/Hurt.png" id="2_x08kk"]
-[ext_resource type="Texture2D" uid="uid://cdxkta0ptq5f4" path="res://assets/octopus/Walk.png" id="4_b0hvn"]
+[ext_resource type="Texture2D" uid="uid://4c0t2ctg7ful" path="res://assets/enemies_and_player/octopus/Idle.png" id="1_lo6s5"]
+[ext_resource type="Texture2D" uid="uid://dhq451v2mf6h7" path="res://assets/enemies_and_player/octopus/Death.png" id="1_qjmah"]
+[ext_resource type="Texture2D" uid="uid://b8gipfucpkdhp" path="res://assets/enemies_and_player/octopus/Hurt.png" id="2_x08kk"]
+[ext_resource type="Texture2D" uid="uid://cdxkta0ptq5f4" path="res://assets/enemies_and_player/octopus/Walk.png" id="4_b0hvn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ancu8"]
 atlas = ExtResource("1_qjmah")
