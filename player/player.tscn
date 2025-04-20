@@ -197,4 +197,4 @@ position = Vector2(-1, 0)
 rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_oul6g")
 animation = &"sharkWalk"
-frame_progress = 0.13958
+frame_progress = 0.0823275
