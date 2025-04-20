@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4428repm1wi7"
-path="res://.godot/imported/seagull_animation.png-6ce3b5f9e06134b69bde74a2d758eecc.ctex"
+uid="uid://bccijmmmjy7rl"
+path="res://.godot/imported/Bird_v002_blue_and_yellow_small.png-848bd5d039bb6f688d5eb5168815d8cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bird/seagull_animation.png"
-dest_files=["res://.godot/imported/seagull_animation.png-6ce3b5f9e06134b69bde74a2d758eecc.ctex"]
+source_file="res://assets/enemies_and_player/bird/Bird_v002_blue_and_yellow_small.png"
+dest_files=["res://.godot/imported/Bird_v002_blue_and_yellow_small.png-848bd5d039bb6f688d5eb5168815d8cf.ctex"]
 
 [params]
 

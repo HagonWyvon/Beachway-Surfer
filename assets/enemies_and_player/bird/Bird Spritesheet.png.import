@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdur8icomk4qs"
-path="res://.godot/imported/Bird Spritesheet.png-e7ae672154b09f3957b5a3f042fecf80.ctex"
+path="res://.godot/imported/Bird Spritesheet.png-5c634e4ede98f0fb8808b0f87f550ad2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bird/Bird Spritesheet.png"
-dest_files=["res://.godot/imported/Bird Spritesheet.png-e7ae672154b09f3957b5a3f042fecf80.ctex"]
+source_file="res://assets/enemies_and_player/bird/Bird Spritesheet.png"
+dest_files=["res://.godot/imported/Bird Spritesheet.png-5c634e4ede98f0fb8808b0f87f550ad2.ctex"]
 
 [params]
 

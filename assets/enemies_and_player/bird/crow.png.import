@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bccijmmmjy7rl"
-path="res://.godot/imported/Bird_v002_blue_and_yellow_small.png-0df45795b0547fe2657b3c9f386e83f9.ctex"
+uid="uid://cjw5las8nw740"
+path="res://.godot/imported/crow.png-01c238c820f45369de37b1402ada44c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bird/Bird_v002_blue_and_yellow_small.png"
-dest_files=["res://.godot/imported/Bird_v002_blue_and_yellow_small.png-0df45795b0547fe2657b3c9f386e83f9.ctex"]
+source_file="res://assets/enemies_and_player/bird/crow.png"
+dest_files=["res://.godot/imported/crow.png-01c238c820f45369de37b1402ada44c0.ctex"]
 
 [params]
 
