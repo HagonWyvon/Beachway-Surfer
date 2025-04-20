@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccr5vwrk4f72p"]
+[gd_scene load_steps=3 format=3 uid="uid://ccr5vwrk4f72p"]
 
 [ext_resource type="PackedScene" uid="uid://bo6bkuh2emu7i" path="res://MainMenu/parallax_background.tscn" id="1_gfqty"]
+[ext_resource type="AudioStream" uid="uid://clfapo5m0cwko" path="res://music/menu/Edvard Grieg_ Peer Gynt - Morning Mood.mp3" id="2_jx6g1"]
 
 [node name="Main" type="Node"]
 
 [node name="parallaxBackground" parent="." instance=ExtResource("1_gfqty")]
+
+[node name="MainMenuTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jx6g1")
+autoplay = true
