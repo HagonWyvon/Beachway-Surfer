@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://casphavmqqao3"
+path="res://.godot/imported/SUBWAY SURFERS (Main Theme).mp3-bcebfa8207968275c359034266f83305.mp3str"
+
+[deps]
+
+source_file="res://music/running/SUBWAY SURFERS (Main Theme).mp3"
+dest_files=["res://.godot/imported/SUBWAY SURFERS (Main Theme).mp3-bcebfa8207968275c359034266f83305.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
