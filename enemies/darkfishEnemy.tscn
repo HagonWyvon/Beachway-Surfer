@@ -1,0 +1,162 @@
+[gd_scene load_steps=23 format=3 uid="uid://daayvqmd3isp6"]
+
+[ext_resource type="Texture2D" uid="uid://ckjbhy2b5nvjf" path="res://assets/darkfish/Death.png" id="1_igaka"]
+[ext_resource type="Texture2D" uid="uid://b5qt6uv4kysp0" path="res://assets/darkfish/Idle.png" id="1_j16nj"]
+[ext_resource type="Texture2D" uid="uid://di7ys1kjr4i5j" path="res://assets/darkfish/Hurt.png" id="1_vu3mj"]
+[ext_resource type="Texture2D" uid="uid://6yjnup6fxcna" path="res://assets/darkfish/Walk.png" id="2_xsp8f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8x3f5"]
+height = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i7sd"]
+atlas = ExtResource("1_igaka")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5gxf"]
+atlas = ExtResource("1_igaka")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl05x"]
+atlas = ExtResource("1_igaka")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpj01"]
+atlas = ExtResource("1_igaka")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dk6t"]
+atlas = ExtResource("1_igaka")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8vsh"]
+atlas = ExtResource("1_igaka")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf88o"]
+atlas = ExtResource("1_vu3mj")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svo74"]
+atlas = ExtResource("1_vu3mj")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsp8f"]
+atlas = ExtResource("1_j16nj")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu3mj"]
+atlas = ExtResource("1_j16nj")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igaka"]
+atlas = ExtResource("1_j16nj")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0usei"]
+atlas = ExtResource("1_j16nj")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yi82n"]
+atlas = ExtResource("2_xsp8f")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpfwi"]
+atlas = ExtResource("2_xsp8f")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t00mg"]
+atlas = ExtResource("2_xsp8f")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsdk5"]
+atlas = ExtResource("2_xsp8f")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yi82n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i7sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5gxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl05x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpj01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dk6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8vsh")
+}],
+"loop": false,
+"name": &"darkfishDeath",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf88o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svo74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf88o")
+}],
+"loop": false,
+"name": &"darkfishHurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsp8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu3mj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igaka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0usei")
+}],
+"loop": true,
+"name": &"darkfishIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yi82n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpfwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t00mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsdk5")
+}],
+"loop": true,
+"name": &"darkfishWalk",
+"speed": 5.0
+}]
+
+[node name="darkfishEnemy" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8x3f5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yi82n")
+animation = &"darkfishDeath"
+autoplay = "darkfishIdle"
+frame = 5
+frame_progress = 1.0
+flip_h = true

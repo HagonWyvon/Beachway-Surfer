@@ -31,6 +31,17 @@ window/stretch/scale_mode="integer"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://assets/": "orange",
+"res://enemies/": "yellow",
+"res://music/": "green",
+"res://player/": "yellow",
+"res://sfx/": "green"
+}
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

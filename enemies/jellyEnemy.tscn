@@ -1,0 +1,163 @@
+[gd_scene load_steps=23 format=3 uid="uid://cgorpvemdd8wu"]
+
+[ext_resource type="Texture2D" uid="uid://ugrgopdct4dg" path="res://assets/jelly/Idle.png" id="1_1dvrh"]
+[ext_resource type="Texture2D" uid="uid://cgegsqg03hcqv" path="res://assets/jelly/Hurt.png" id="1_jhokn"]
+[ext_resource type="Texture2D" uid="uid://b8fvmqis45civ" path="res://assets/jelly/Death.png" id="1_pyvgs"]
+[ext_resource type="Texture2D" uid="uid://otffg445r1qe" path="res://assets/jelly/Walk.png" id="4_0t7ou"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjcd5"]
+atlas = ExtResource("1_pyvgs")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsoaq"]
+atlas = ExtResource("1_pyvgs")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6ykp"]
+atlas = ExtResource("1_pyvgs")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc1wu"]
+atlas = ExtResource("1_pyvgs")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc254"]
+atlas = ExtResource("1_pyvgs")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlisv"]
+atlas = ExtResource("1_pyvgs")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js7gi"]
+atlas = ExtResource("1_jhokn")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyvgs"]
+atlas = ExtResource("1_jhokn")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t7ou"]
+atlas = ExtResource("1_1dvrh")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdm5p"]
+atlas = ExtResource("1_1dvrh")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxmgq"]
+atlas = ExtResource("1_1dvrh")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xgl2"]
+atlas = ExtResource("1_1dvrh")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf58e"]
+atlas = ExtResource("4_0t7ou")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcx1i"]
+atlas = ExtResource("4_0t7ou")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om4hy"]
+atlas = ExtResource("4_0t7ou")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo6j2"]
+atlas = ExtResource("4_0t7ou")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjcd5"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjcd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsoaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6ykp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc1wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc254")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlisv")
+}],
+"loop": false,
+"name": &"jellyDeath",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js7gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyvgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js7gi")
+}],
+"loop": false,
+"name": &"jellyHurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t7ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdm5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxmgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xgl2")
+}],
+"loop": true,
+"name": &"jellyIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf58e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcx1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om4hy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo6j2")
+}],
+"loop": true,
+"name": &"jellyWalk",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tsoaq"]
+radius = 8.0
+height = 24.0
+
+[node name="jellyEnemy" type="CharacterBody2D"]
+scale = Vector2(1.2, 1.2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pjcd5")
+animation = &"jellyWalk"
+autoplay = "jellyIdle"
+frame_progress = 0.921371
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("CapsuleShape2D_tsoaq")
