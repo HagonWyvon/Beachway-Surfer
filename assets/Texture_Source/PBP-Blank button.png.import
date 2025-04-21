@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://isn6i27csxt5"
-path="res://.godot/imported/Walk.png-6551b02c42f5bb86916abfe5ba958d6d.ctex"
+uid="uid://c8lvrwov6not0"
+path="res://.godot/imported/PBP-Blank button.png-917669e83008a719e93a609167b05758.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Shark/Walk.png"
-dest_files=["res://.godot/imported/Walk.png-6551b02c42f5bb86916abfe5ba958d6d.ctex"]
+source_file="res://assets/Texture_Source/PBP-Blank button.png"
+dest_files=["res://.godot/imported/PBP-Blank button.png-917669e83008a719e93a609167b05758.ctex"]
 
 [params]
 

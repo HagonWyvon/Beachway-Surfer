@@ -1,10 +1,14 @@
 extends Node
 
 @export var BirdScene: PackedScene
+
+
+
 var score
 
 func _ready():
-	newGame()
+	pass
+	#newGame()
 
 func _process(delta: float) -> void:
 	#get_last_exclusive_window().size = DisplayServer.screen_get_size();
@@ -34,3 +38,8 @@ func _on_score_timer_timeout() -> void:
 func _on_start_timer_timeout() -> void:
 	$Timer/MobSpawnTimer.start()
 	$Timer/ScoreTimer.start()
+
+
+func _on_menu_newgame_sigal() -> void:
+	newGame()
+	#print("okkk")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c06gvgj6seevj"
-path="res://.godot/imported/Idle.png-8da7979654d80786d5ef915a2caf366b.ctex"
+uid="uid://cdbt3vbreyha5"
+path="res://.godot/imported/Button (4).png-2b8a13d5eac8b26a432bbfcf513c6375.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/turtle/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-8da7979654d80786d5ef915a2caf366b.ctex"]
+source_file="res://assets/Texture_Source/Button (4).png"
+dest_files=["res://.godot/imported/Button (4).png-2b8a13d5eac8b26a432bbfcf513c6375.ctex"]
 
 [params]
 

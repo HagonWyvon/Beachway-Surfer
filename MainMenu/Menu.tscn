@@ -1,50 +1,71 @@
-[gd_scene load_steps=4 format=3 uid="uid://crlfq6s8l7fvl"]
+[gd_scene load_steps=3 format=3 uid="uid://crlfq6s8l7fvl"]
 
-[ext_resource type="Texture2D" uid="uid://eu13l3rt4aqk" path="res://assets/Texture_Source/Pixel Buttom.png" id="1_nuv2b"]
+[ext_resource type="Theme" uid="uid://bl03w1htwslkp" path="res://assets/button/custom_button.tres" id="1_nuv2b"]
+[ext_resource type="Script" uid="uid://cuj31lfst68rl" path="res://GDscripts/menu.gd" id="2_jefjr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jefjr"]
-atlas = ExtResource("1_nuv2b")
-region = Rect2(512, 256, 64, 32)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o5td3"]
-texture = SubResource("AtlasTexture_jefjr")
-
-[node name="VBoxContainer" type="VBoxContainer"]
+[node name="UI" type="Control"]
 custom_minimum_size = Vector2(200, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_nuv2b")
+script = ExtResource("2_jefjr")
+
+[node name="Menu" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -56.0
-offset_right = 100.0
-offset_bottom = 56.0
+offset_left = -50.0
+offset_top = -66.0
+offset_right = 50.0
+offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Stargame" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Startgame" type="Button" parent="Menu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
+layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_styles/normal = SubResource("StyleBoxTexture_o5td3")
 text = "START GAME"
 icon_alignment = 1
 
-[node name="Shop" type="Button" parent="."]
-custom_minimum_size = Vector2(0, 25)
+[node name="Shop" type="Button" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_direction = 1
 layout_mode = 2
+size_flags_vertical = 4
 text = "SHOP"
 icon_alignment = 1
 
-[node name="Setting" type="Button" parent="."]
-custom_minimum_size = Vector2(0, 25)
+[node name="Setting" type="Button" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_direction = 1
 layout_mode = 2
+size_flags_vertical = 4
 text = "SETTING"
 icon_alignment = 1
 
-[node name="Quit" type="Button" parent="."]
-custom_minimum_size = Vector2(0, 25)
+[node name="Quit" type="Button" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_direction = 1
 layout_mode = 2
+size_flags_vertical = 4
 text = "QUIT GAME"
 icon_alignment = 1
+
+[connection signal="pressed" from="Menu/VBoxContainer/Startgame" to="." method="_on_startgame_pressed"]

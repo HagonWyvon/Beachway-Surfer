@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://isn6i27csxt5"
-path="res://.godot/imported/Walk.png-6551b02c42f5bb86916abfe5ba958d6d.ctex"
+uid="uid://b72uy8kfgjb4f"
+path="res://.godot/imported/Button (6).png-08f54e1b8b41c96cc840d9721ae77951.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Shark/Walk.png"
-dest_files=["res://.godot/imported/Walk.png-6551b02c42f5bb86916abfe5ba958d6d.ctex"]
+source_file="res://assets/Texture_Source/Button (6).png"
+dest_files=["res://.godot/imported/Button (6).png-08f54e1b8b41c96cc840d9721ae77951.ctex"]
 
 [params]
 
