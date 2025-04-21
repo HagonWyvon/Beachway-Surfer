@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxijqhdl4ycrh"
-path="res://.godot/imported/Water Spike 01 - SpriteSheet.png-d13402f9696ac6395b0e67c6300cf293.ctex"
+uid="uid://b4e6iglrkaygs"
+path="res://.godot/imported/Water Splash 01 - Spritesheet.png-ed0250985160c43dcbb74b4ccd1139ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spike/Water Spike 01 - SpriteSheet.png"
-dest_files=["res://.godot/imported/Water Spike 01 - SpriteSheet.png-d13402f9696ac6395b0e67c6300cf293.ctex"]
+source_file="res://assets/jump/Water Splash 01 - Spritesheet.png"
+dest_files=["res://.godot/imported/Water Splash 01 - Spritesheet.png-ed0250985160c43dcbb74b4ccd1139ab.ctex"]
 
 [params]
 
