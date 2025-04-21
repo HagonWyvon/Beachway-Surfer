@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccr5vwrk4f72p"]
 
-[ext_resource type="PackedScene" uid="uid://bo6bkuh2emu7i" path="res://MainUI/parallax_background.tscn" id="1_gfqty"]
+[ext_resource type="PackedScene" uid="uid://bo6bkuh2emu7i" path="res://TheGame/parallax_background.tscn" id="1_gfqty"]
 [ext_resource type="Script" uid="uid://bl5cir2b8xjtf" path="res://GDscripts/main_game.gd" id="1_lweib"]
 [ext_resource type="PackedScene" uid="uid://bljy3a28ikt40" path="res://enemies/bird.tscn" id="2_1j64x"]
 [ext_resource type="AudioStream" uid="uid://clfapo5m0cwko" path="res://music/menu/Edvard Grieg_ Peer Gynt - Morning Mood.mp3" id="2_jx6g1"]
@@ -18,17 +18,6 @@ BirdScene = ExtResource("2_1j64x")
 
 [node name="parallaxBackground" parent="." instance=ExtResource("1_gfqty")]
 
-[node name="MainMenuTheme" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_jx6g1")
-autoplay = true
-
-[node name="MobSpawnTimer" type="Timer" parent="."]
-
-[node name="ScoreTimer" type="Timer" parent="."]
-
-[node name="StartTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="BirdSpawn" type="Path2D" parent="."]
 curve = SubResource("Curve2D_jx6g1")
 
@@ -42,6 +31,21 @@ position = Vector2(120, 336)
 [node name="Player" parent="." instance=ExtResource("5_2r60g")]
 position = Vector2(-56, 336)
 
-[connection signal="timeout" from="MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
-[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
-[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[node name="Timer" type="Node" parent="."]
+
+[node name="StartTimer" type="Timer" parent="Timer"]
+one_shot = true
+
+[node name="ScoreTimer" type="Timer" parent="Timer"]
+
+[node name="MobSpawnTimer" type="Timer" parent="Timer"]
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="MainMenuTheme" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("2_jx6g1")
+autoplay = true
+
+[connection signal="timeout" from="Timer/StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="Timer/ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="Timer/MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

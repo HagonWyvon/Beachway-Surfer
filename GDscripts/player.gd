@@ -13,13 +13,13 @@ func _ready():
 
 func _process(delta):
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("jump") && $JumpCD.is_stopped():
-		$JumpCD.start()
+	if Input.is_action_pressed("jump") && $Timer/JumpCD.is_stopped():
+		$Timer/JumpCD.start()
 		$Spike.offset.y += 36
 		$Spike.animation = "spike_start_up"
 		$Spike.show()
 		$Spike.play()
-		$JumpTimer.start()
+		$Timer/JumpTimer.start()
 
 
 func _on_jump_timer_timeout() -> void:

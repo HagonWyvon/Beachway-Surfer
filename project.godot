@@ -13,6 +13,7 @@ config_version=5
 config/name="Beachway Surfer"
 config/description="Become a shark, bite people, eat seagulls and fishes befure your hunger bar runs out
 "
+run/main_scene="uid://ccr5vwrk4f72p"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://pcyb2866jt86"
 

@@ -12,11 +12,11 @@ func _process(delta: float) -> void:
 func newGame():
 	score = 0;
 	$Player.start($PlayerSpawn.position)
-	$StartTimer.start()
+	$Timer/StartTimer.start()
 	
 func gameOver():
-	$ScoreTimer.stop()
-	$MobSpawnTimer.stop()
+	$Timer/ScoreTimer.stop()
+	$Timer/MobSpawnTimer.stop()
 
 
 func _on_mob_spawn_timer_timeout() -> void:
@@ -32,5 +32,5 @@ func _on_score_timer_timeout() -> void:
 	score+=1
 
 func _on_start_timer_timeout() -> void:
-	$MobSpawnTimer.start()
-	$ScoreTimer.start()
+	$Timer/MobSpawnTimer.start()
+	$Timer/ScoreTimer.start()

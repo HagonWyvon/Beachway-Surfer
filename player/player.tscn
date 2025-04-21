@@ -774,11 +774,14 @@ sprite_frames = SubResource("SpriteFrames_oul6g")
 animation = &"sharkWalk"
 autoplay = "sharkWalk"
 
-[node name="JumpTimer" type="Timer" parent="."]
+[node name="Timer" type="Node" parent="."]
+
+[node name="JumpTimer" type="Timer" parent="Timer"]
 one_shot = true
 
-[node name="JumpCD" type="Timer" parent="."]
+[node name="JumpCD" type="Timer" parent="Timer"]
 wait_time = 2.0
 one_shot = true
+autostart = true
 
-[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="timeout" from="Timer/JumpTimer" to="." method="_on_jump_timer_timeout"]
