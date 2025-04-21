@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://dnxwq2fkanje6"]
+
+[ext_resource type="Texture2D" uid="uid://isn6i27csxt5" path="res://assets/shark/Walk.png" id="1_2w7hj"]
+[ext_resource type="Script" uid="uid://cnrnj3o8pkn2i" path="res://GDscripts/shark.gd" id="1_6lysk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lysk"]
+atlas = ExtResource("1_2w7hj")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mbdm"]
+atlas = ExtResource("1_2w7hj")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yx6c"]
+atlas = ExtResource("1_2w7hj")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaavc"]
+atlas = ExtResource("1_2w7hj")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cy6ve"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lysk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mbdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yx6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaavc")
+}],
+"loop": true,
+"name": &"swimmin",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_snknl"]
+radius = 11.0
+height = 50.0
+
+[node name="Shark" type="Area2D"]
+script = ExtResource("1_6lysk")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cy6ve")
+animation = &"swimmin"
+autoplay = "swimmin"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_snknl")

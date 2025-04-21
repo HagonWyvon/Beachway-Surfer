@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8motfrxb2fjp"
-path="res://.godot/imported/Attack.png-418d446916066b52ddcb25cd0a8df516.ctex"
+uid="uid://bko628trdv1ud"
+path="res://.godot/imported/Water StartUp 2 SpriteSheet (30 Fps).png-cb924aad913e9b18ded720baf8bf5ee8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/shark/Attack.png"
-dest_files=["res://.godot/imported/Attack.png-418d446916066b52ddcb25cd0a8df516.ctex"]
+source_file="res://assets/jump/Water StartUp 2 SpriteSheet (30 Fps).png"
+dest_files=["res://.godot/imported/Water StartUp 2 SpriteSheet (30 Fps).png-cb924aad913e9b18ded720baf8bf5ee8.ctex"]
 
 [params]
 

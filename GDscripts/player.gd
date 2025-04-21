@@ -1,42 +1,44 @@
-extends Area2D
+extends Node2D
 
-signal hit
-
-var jumpready = false
+var holding = false
 
 func start(pos):
 	position = pos
 	show()
-	$Hitbox.disabled = false
 
 func _ready():
-	$Anim/BoosterFever.hide()
-	$Anim/Jump.hide()
+	$BoosterFever.hide()
+	$Jump.hide()
 
 func _process(delta):
 	if Input.is_action_just_pressed("jump") && $Timer/JumpCD.is_stopped():
-		$Anim/Jump.offset.y = 0
-		$Anim/Jump.animation = "start_up"
-		$Anim/Jump.show()
-		$Anim/Jump.play()
+		holding = true
+		
+		$Jump.offset.y = 0
+		$Jump.animation = "start_up1"
+		$Jump.show()
+		$Jump.play()
+		
+		$Mask/Shark.hide()
 		
 		$Timer/JumpTimer.start()
 	
-	if Input.is_action_just_released("jump") && !$Timer/JumpTimer.is_stopped():
-		#Jump Low
-		$Anim/Jump.offset.y = -36
-		$Anim/Jump.animation = "lowjump"
-		$Anim/Jump.play()
+	if Input.is_action_just_released("jump") && holding:
+		$Jump.offset.y = -36
+		if !$Timer/JumpTimer.is_stopped():
+			$Jump.animation = "lowjump"
+			$Timer/JumpTimer.stop()
+		else:
+			$Jump.animation = "highjump"
+		$Jump.play()
 		
-		$Timer/JumpCD.wait_time = 0.5
+		$Mask/Shark.show()
+		$Mask/Shark.jump()
+		holding = false
+		
 		$Timer/JumpCD.start()
-		
-		
-	if Input.is_action_just_released("jump") && $Timer/JumpTimer.is_stopped():
-		#Jump High
-		$Anim/Jump.offset.y = -36
-		$Anim/Jump.animation = "highjump"
-		$Anim/Jump.play()
-		
-		$Timer/JumpCD.wait_time = 2.5
-		$Timer/JumpCD.start()
+
+
+func _on_jump_timer_timeout() -> void:
+	$Jump.animation = "start_up2"
+	$Jump.play()
