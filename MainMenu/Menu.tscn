@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://crlfq6s8l7fvl"]
+
+[ext_resource type="Texture2D" uid="uid://eu13l3rt4aqk" path="res://assets/Texture_Source/Pixel Buttom.png" id="1_nuv2b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jefjr"]
+atlas = ExtResource("1_nuv2b")
+region = Rect2(512, 256, 64, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o5td3"]
+texture = SubResource("AtlasTexture_jefjr")
+
+[node name="VBoxContainer" type="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -56.0
+offset_right = 100.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stargame" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_o5td3")
+text = "START GAME"
+icon_alignment = 1
+
+[node name="Shop" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+text = "SHOP"
+icon_alignment = 1
+
+[node name="Setting" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+text = "SETTING"
+icon_alignment = 1
+
+[node name="Quit" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+text = "QUIT GAME"
+icon_alignment = 1

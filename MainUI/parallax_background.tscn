@@ -13,34 +13,42 @@ script = ExtResource("1_jbber")
 auto_translate_mode = 1
 
 [node name="bluesky" type="Parallax2D" parent="blueskyBackground"]
+scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(640, 0)
 autoscroll = Vector2(-26, 0)
 repeat_times = 2
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="blueskyBackground/bluesky"]
-scale = Vector2(1.11111, 1.11111)
+scale = Vector2(1.11111, 1.29938)
 texture = ExtResource("2_mvq4b")
 centered = false
 
 [node name="backcloud" type="Parallax2D" parent="blueskyBackground"]
+scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(640, 0)
 autoscroll = Vector2(-16, 0)
 repeat_times = 2
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="blueskyBackground/backcloud"]
-position = Vector2(320, 126)
+position = Vector2(320, 127)
 scale = Vector2(1.11111, 1)
 texture = ExtResource("3_50yks")
 
 [node name="cloud" type="Parallax2D" parent="blueskyBackground"]
+scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(640, 0)
 autoscroll = Vector2(-26, 0)
 repeat_times = 2
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="blueskyBackground/cloud"]
+position = Vector2(320, 127)
+scale = Vector2(1.11111, 1)
+texture = ExtResource("4_1nj0j")
+
+[node name="Sprite2D2" type="Sprite2D" parent="blueskyBackground/cloud"]
 position = Vector2(320, 127)
 scale = Vector2(1.11111, 1)
 texture = ExtResource("4_1nj0j")

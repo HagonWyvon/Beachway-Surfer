@@ -6,9 +6,9 @@ var score
 func _ready():
 	newGame()
 
-func _process(delta):
+func _process(delta: float) -> void:
+	#get_last_exclusive_window().size = DisplayServer.screen_get_size();
 	pass
-	
 func newGame():
 	score = 0;
 	$Player.start($PlayerSpawn.position)
@@ -30,7 +30,6 @@ func _on_mob_spawn_timer_timeout() -> void:
 
 func _on_score_timer_timeout() -> void:
 	score+=1
-
 
 func _on_start_timer_timeout() -> void:
 	$MobSpawnTimer.start()

@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo6bkuh2emu7i"]
+
+[ext_resource type="Script" uid="uid://cjoyxaptg3vwl" path="res://GDscripts/bluesky_background.gd" id="1_jbber"]
+[ext_resource type="Texture2D" uid="uid://bjicfno0h0gak" path="res://assets/Background/Clouds/Clouds 1/1.png" id="2_mvq4b"]
+[ext_resource type="Texture2D" uid="uid://bfxwfd0vhny4v" path="res://assets/Background/Clouds/Clouds 1/2.png" id="3_50yks"]
+[ext_resource type="Texture2D" uid="uid://c5j3evjo6gd67" path="res://assets/Background/Clouds/Clouds 1/4.png" id="4_1nj0j"]
+
+[node name="parallaxBackground" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_jbber")
+
+[node name="blueskyBackground" type="ParallaxBackground" parent="."]
+auto_translate_mode = 1
+
+[node name="bluesky" type="Parallax2D" parent="blueskyBackground"]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-26, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="blueskyBackground/bluesky"]
+scale = Vector2(1.11111, 1.11111)
+texture = ExtResource("2_mvq4b")
+centered = false
+
+[node name="backcloud" type="Parallax2D" parent="blueskyBackground"]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-16, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="blueskyBackground/backcloud"]
+position = Vector2(320, 126)
+scale = Vector2(1.11111, 1)
+texture = ExtResource("3_50yks")
+
+[node name="cloud" type="Parallax2D" parent="blueskyBackground"]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-26, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="blueskyBackground/cloud"]
+position = Vector2(320, 127)
+scale = Vector2(1.11111, 1)
+texture = ExtResource("4_1nj0j")
+
+[node name="Sprite2D2" type="Sprite2D" parent="blueskyBackground/cloud"]
+position = Vector2(320, 127)
+scale = Vector2(1.11111, 1)
+texture = ExtResource("4_1nj0j")

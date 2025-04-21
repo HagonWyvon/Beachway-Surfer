@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4ifldiipsaf6"]
+
+[ext_resource type="PackedScene" uid="uid://bo6bkuh2emu7i" path="res://MainTheme/parallax_background.tscn" id="1_gfqty"]
+[ext_resource type="Script" uid="uid://bl5cir2b8xjtf" path="res://GDscripts/main_game.gd" id="1_lweib"]
+[ext_resource type="PackedScene" uid="uid://bljy3a28ikt40" path="res://enemies/bird.tscn" id="2_1j64x"]
+[ext_resource type="AudioStream" uid="uid://clfapo5m0cwko" path="res://music/menu/Edvard Grieg_ Peer Gynt - Morning Mood.mp3" id="2_jx6g1"]
+[ext_resource type="PackedScene" uid="uid://crlfq6s8l7fvl" path="res://MainMenu/Menu.tscn" id="3_hqoxi"]
+[ext_resource type="PackedScene" uid="uid://d3446qnhg3cxc" path="res://player/player.tscn" id="5_2r60g"]
+
+[sub_resource type="Curve2D" id="Curve2D_jx6g1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 640, 272, 0, 0, 0, 0, 640, 120)
+}
+point_count = 2
+
+[node name="Main" type="Node"]
+script = ExtResource("1_lweib")
+BirdScene = ExtResource("2_1j64x")
+
+[node name="MainMenu" parent="." instance=ExtResource("3_hqoxi")]
+z_index = 999
+layout_direction = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+alignment = 1
+
+[node name="parallaxBackground" parent="." instance=ExtResource("1_gfqty")]
+
+[node name="MainMenuTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jx6g1")
+autoplay = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="MobSpawnTimer" type="Timer" parent="Node"]
+
+[node name="ScoreTimer" type="Timer" parent="Node"]
+
+[node name="StartTimer" type="Timer" parent="Node"]
+one_shot = true
+
+[node name="BirdSpawn" type="Path2D" parent="Node"]
+curve = SubResource("Curve2D_jx6g1")
+
+[node name="BirdLocation" type="PathFollow2D" parent="Node/BirdSpawn"]
+position = Vector2(640, 272)
+rotation = -1.5708
+
+[node name="PlayerSpawn" type="Marker2D" parent="Node"]
+position = Vector2(119, 336)
+
+[node name="Player" parent="." instance=ExtResource("5_2r60g")]
+position = Vector2(-56, 336)
+
+[connection signal="timeout" from="Node/MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
+[connection signal="timeout" from="Node/ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="Node/StartTimer" to="." method="_on_start_timer_timeout"]
