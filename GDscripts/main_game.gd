@@ -4,7 +4,7 @@ extends Node
 
 
 
-var score
+@export var score = 0
 
 func _ready():
 	pass

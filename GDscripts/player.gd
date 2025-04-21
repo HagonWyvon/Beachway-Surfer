@@ -27,13 +27,14 @@ func _process(delta):
 		$Jump.offset.y = -36
 		if !$Timer/JumpTimer.is_stopped():
 			$Jump.animation = "lowjump"
+			$Mask/Shark.jump(-100)
 			$Timer/JumpTimer.stop()
 		else:
 			$Jump.animation = "highjump"
+			$Mask/Shark.jump(-250)
 		$Jump.play()
 		
 		$Mask/Shark.show()
-		$Mask/Shark.jump()
 		holding = false
 		
 		$Timer/JumpCD.start()
