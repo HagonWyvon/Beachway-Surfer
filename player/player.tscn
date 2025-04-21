@@ -906,5 +906,6 @@ texture = SubResource("GradientTexture2D_hg6s5")
 offset = Vector2(0, -182)
 
 [node name="Shark" parent="Mask" instance=ExtResource("7_boad6")]
+height = -100
 
 [connection signal="timeout" from="Timer/JumpTimer" to="." method="_on_jump_timer_timeout"]

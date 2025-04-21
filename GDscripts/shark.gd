@@ -1,20 +1,28 @@
 extends Area2D
 
 var velocity = Vector2.ZERO
-var deacceleration = 300.0
-var is_jumping = false
+var airborne = false
+
+@export var jumprotation = 25
+@export var deacceleration = 215.0
+@export var height = -1
 
 func jump(jump_height):
-	if !is_jumping:
-		velocity.y = jump_height
-		is_jumping = true
+	velocity.y = jump_height
+	airborne = true
+	height = -1
+
+func dive(depth):
+	height = depth
 
 func _process(delta: float) -> void:
-	if is_jumping:
+	if velocity.y > 0 && airborne:
+		rotation_degrees = jumprotation
+	if velocity.y < 0 && airborne:
+		rotation_degrees = -jumprotation
+	if airborne:
 		velocity.y += deacceleration * delta
-		
-		if velocity.y >= 0:
-			velocity.y = 0
-			is_jumping = false
-	
-	position += velocity * delta
+		position += velocity * delta
+	if position.y >= height:
+		airborne = false
+		rotation_degrees = 0
