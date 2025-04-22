@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bl03w1htwslkp" path="res://assets/button/custom_button.tres" id="1_nuv2b"]
 [ext_resource type="Script" uid="uid://cuj31lfst68rl" path="res://GDscripts/menu.gd" id="2_jefjr"]
-[ext_resource type="AudioStream" uid="uid://nfrhwl7xl370" path="res://sfx/menu-selection-102220.mp3" id="3_gtolh"]
+[ext_resource type="AudioStream" uid="uid://nfrhwl7xl370" path="res://sfx/MenuSFX/menu-selection-102220.mp3" id="3_gtolh"]
 [ext_resource type="Texture2D" uid="uid://6tde23lkguq2" path="res://assets/Texture_Source/GUI.png" id="3_o5td3"]
 
 [node name="UI" type="Control"]
@@ -18,7 +18,7 @@ size_flags_vertical = 4
 theme = ExtResource("1_nuv2b")
 script = ExtResource("2_jefjr")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="ClickSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_gtolh")
 
 [node name="Menu" type="NinePatchRect" parent="."]

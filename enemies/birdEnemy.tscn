@@ -1,10 +1,10 @@
 [gd_scene load_steps=31 format=3 uid="uid://bljy3a28ikt40"]
 
 [ext_resource type="Texture2D" uid="uid://bdur8icomk4qs" path="res://assets/enemies_and_player/bird/Bird Spritesheet.png" id="1_l42xp"]
-[ext_resource type="Script" uid="uid://cjxec2hbgwxrn" path="res://GDscripts/bird_enemy.gd" id="1_mai85"]
+[ext_resource type="Script" path="res://GDscripts/bird_enemy.gd" id="1_mai85"]
 [ext_resource type="Texture2D" uid="uid://cjw5las8nw740" path="res://assets/enemies_and_player/bird/crow.png" id="2_vflvl"]
 [ext_resource type="Texture2D" uid="uid://c4428repm1wi7" path="res://assets/enemies_and_player/bird/seagull_animation.png" id="3_r5vk0"]
-[ext_resource type="AudioStream" uid="uid://s5ynqy8fdhea" path="res://sfx/hitHurt.wav" id="5_8hchc"]
+[ext_resource type="AudioStream" uid="uid://s5ynqy8fdhea" path="res://sfx/Hagons_SFX/hitHurt.wav" id="5_8hchc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wnjls"]
 atlas = ExtResource("1_l42xp")

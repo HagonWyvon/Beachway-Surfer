@@ -35,14 +35,10 @@ func _process(delta):
 			$Jump.animation = "highjump"
 			$Mask/Shark.jump(-highjumpheight)
 		$Jump.play()
-		
 		holding = false
-		
 		$Timer/JumpCD.start()
-
 
 func _on_jump_timer_timeout() -> void:
 	$Jump.animation = "start_up2"
 	$Jump.play()
-	
 	#$JumpReady.play()
