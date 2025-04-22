@@ -1,21 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://bljy3a28ikt40"]
+[gd_scene load_steps=31 format=3 uid="uid://bljy3a28ikt40"]
 
 [ext_resource type="Texture2D" uid="uid://bdur8icomk4qs" path="res://assets/enemies_and_player/bird/Bird Spritesheet.png" id="1_l42xp"]
+[ext_resource type="Script" uid="uid://cjxec2hbgwxrn" path="res://GDscripts/bird_enemy.gd" id="1_mai85"]
 [ext_resource type="Texture2D" uid="uid://cjw5las8nw740" path="res://assets/enemies_and_player/bird/crow.png" id="2_vflvl"]
 [ext_resource type="Texture2D" uid="uid://c4428repm1wi7" path="res://assets/enemies_and_player/bird/seagull_animation.png" id="3_r5vk0"]
-
-[sub_resource type="GDScript" id="GDScript_l42xp"]
-script/source = "extends RigidBody2D
-
-func _ready():
-	var bird_types = Array($birdskin.sprite_frames.get_animation_names())
-	$birdskin.animation = bird_types.pick_random()
-
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	queue_free()
-"
+[ext_resource type="AudioStream" uid="uid://s5ynqy8fdhea" path="res://sfx/hitHurt.wav" id="5_8hchc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wnjls"]
 atlas = ExtResource("1_l42xp")
@@ -203,7 +192,7 @@ height = 36.0
 [node name="bird" type="RigidBody2D"]
 collision_mask = 0
 gravity_scale = 0.0
-script = SubResource("GDScript_l42xp")
+script = ExtResource("1_mai85")
 
 [node name="birdskin" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8u0fc")
@@ -220,4 +209,7 @@ metadata/_edit_group_ = true
 position = Vector2(0, 1)
 metadata/_edit_group_ = true
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8hchc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

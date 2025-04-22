@@ -11,11 +11,14 @@ func jump(jump_height):
 	velocity.y = jump_height
 	airborne = true
 	height = -1
+	$Jumpsfx.play()
 
 func dive(depth):
 	height = depth
 
 func _process(delta: float) -> void:
+	if position.y < height:
+		airborne = true
 	if velocity.y > 0 && airborne:
 		rotation_degrees = jumprotation
 	if velocity.y < 0 && airborne:
@@ -23,6 +26,6 @@ func _process(delta: float) -> void:
 	if airborne:
 		velocity.y += deacceleration * delta
 		position += velocity * delta
-	if position.y >= height:
+	if position.y >= height && velocity.y > 0:
 		airborne = false
 		rotation_degrees = 0

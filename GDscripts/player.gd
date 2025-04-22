@@ -1,8 +1,8 @@
 extends Node2D
 
 var holding = false
-@export var highjumpheight = 300
-@export var lowjumpheight = 100
+@export var highjumpheight = 375
+@export var lowjumpheight = 250
 
 func start(pos):
 	position = pos
@@ -21,6 +21,7 @@ func _process(delta):
 		$Jump.show()
 		$Jump.play()
 		
+		$Mask/Shark.dive(10)
 		
 		$Timer/JumpTimer.start()
 	
@@ -43,3 +44,5 @@ func _process(delta):
 func _on_jump_timer_timeout() -> void:
 	$Jump.animation = "start_up2"
 	$Jump.play()
+	
+	$JumpReady.play()
