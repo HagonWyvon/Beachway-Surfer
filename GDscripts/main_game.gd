@@ -1,18 +1,21 @@
 extends Node
 
 @export var BirdScene: PackedScene
-
-
-
 @export var score = 0
 
 func _ready():
 	pass
 	#newGame()
 
+func _on_shark_biten():
+	score += 10
+
+
 func _process(delta: float) -> void:
 	#get_last_exclusive_window().size = DisplayServer.screen_get_size();
-	pass
+	print(score)
+
+
 func newGame():
 	score = 0;
 	$Player.start($PlayerSpawn.position)
@@ -25,12 +28,14 @@ func gameOver():
 
 func _on_mob_spawn_timer_timeout() -> void:
 	var mob = BirdScene.instantiate()
+	
+	mob.connect("biten", Callable(self, "_on_shark_biten"))
+
 	var mobSpawnLocation = $BirdSpawn/BirdLocation
 	mobSpawnLocation.progress_ratio = randf()
 	mob.position = mobSpawnLocation.position
-	var velocity = Vector2(-randf_range(150.0, 250.0), 0.0)
-	mob.linear_velocity = velocity
 	add_child(mob)
+
 
 func _on_score_timer_timeout() -> void:
 	score+=1

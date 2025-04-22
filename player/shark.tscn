@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnxwq2fkanje6"]
+[gd_scene load_steps=11 format=3 uid="uid://dnxwq2fkanje6"]
 
-[ext_resource type="Texture2D" uid="uid://isn6i27csxt5" path="res://assets/Shark/Walk.png" id="1_2w7hj"]
+[ext_resource type="Texture2D" uid="uid://isn6i27csxt5" path="res://assets/shark/Walk.png" id="1_2w7hj"]
 [ext_resource type="Script" uid="uid://cnrnj3o8pkn2i" path="res://GDscripts/shark.gd" id="1_6lysk"]
 [ext_resource type="AudioStream" uid="uid://hc3aakd4vmx4" path="res://sfx/JumpSFX/Short_Jump.wav" id="3_0mbdm"]
+[ext_resource type="AudioStream" uid="uid://b2ci0nlm6up4" path="res://sfx/JumpSFX/High_Jump.wav" id="3_8yx6c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6lysk"]
 atlas = ExtResource("1_2w7hj")
@@ -44,7 +45,8 @@ animations = [{
 radius = 11.0
 height = 50.0
 
-[node name="Shark" type="Area2D"]
+[node name="Shark" type="RigidBody2D"]
+gravity_scale = 0.0
 linear_damp = 30.228
 script = ExtResource("1_6lysk")
 metadata/_edit_group_ = true
@@ -58,7 +60,14 @@ autoplay = "swimmin"
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_snknl")
 
-[node name="Jumpsfx" type="AudioStreamPlayer" parent="."]
+[node name="HighJumpsfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8yx6c")
+volume_db = -20.0
+mix_target = 1
+
+[node name="LowJumpsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_0mbdm")
 volume_db = -20.0
 mix_target = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
