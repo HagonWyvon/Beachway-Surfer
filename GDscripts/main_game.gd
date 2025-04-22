@@ -42,4 +42,14 @@ func _on_start_timer_timeout() -> void:
 
 func _on_menu_newgame_sigal() -> void:
 	newGame()
-	#print("okkk")
+	$Menu.hide()
+
+
+func _on_menu_quitgame_signal() -> void:
+	get_tree().quit()
+
+func _on_menu_setting_signal() -> void:
+	pass
+	
+func _on_menu_shop_singal() -> void:
+	pass

@@ -22,6 +22,7 @@ offset_top = -58.5
 offset_bottom = 58.5
 
 [node name="parallaxBackground" parent="." instance=ExtResource("1_gfqty")]
+backgroundNum = 3
 
 [node name="BirdSpawn" type="Path2D" parent="."]
 curve = SubResource("Curve2D_jx6g1")
@@ -52,6 +53,9 @@ stream = ExtResource("2_jx6g1")
 autoplay = true
 
 [connection signal="NewgameSigal" from="Menu" to="." method="_on_menu_newgame_sigal"]
+[connection signal="QuitgameSignal" from="Menu" to="." method="_on_menu_quitgame_signal"]
+[connection signal="SettingSignal" from="Menu" to="." method="_on_menu_setting_signal"]
+[connection signal="ShopSingal" from="Menu" to="." method="_on_menu_shop_singal"]
 [connection signal="timeout" from="Timer/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Timer/ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="Timer/MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
