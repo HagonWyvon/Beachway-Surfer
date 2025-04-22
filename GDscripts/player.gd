@@ -45,4 +45,4 @@ func _on_jump_timer_timeout() -> void:
 	$Jump.animation = "start_up2"
 	$Jump.play()
 	
-	$JumpReady.play()
+	#$JumpReady.play()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dnxwq2fkanje6"]
 
-[ext_resource type="Texture2D" uid="uid://isn6i27csxt5" path="res://assets/shark/Walk.png" id="1_2w7hj"]
+[ext_resource type="Texture2D" uid="uid://isn6i27csxt5" path="res://assets/Shark/Walk.png" id="1_2w7hj"]
 [ext_resource type="Script" uid="uid://cnrnj3o8pkn2i" path="res://GDscripts/shark.gd" id="1_6lysk"]
 [ext_resource type="AudioStream" uid="uid://h5tl0pq2xr56" path="res://sfx/jump.wav" id="3_0mbdm"]
 

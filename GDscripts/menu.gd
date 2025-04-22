@@ -15,9 +15,9 @@ func _process(delta: float) -> void:
 func _on_startgame_pressed() -> void:
 	NewgameSigal.emit()
 
-
 func _on_shop_pressed() -> void:
 	ShopSingal.emit()
+	$AudioStreamPlayer2D.play()
 
 func _on_setting_pressed() -> void:
 	SettingSignal.emit()
