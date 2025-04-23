@@ -1,6 +1,5 @@
 extends Area2D
 
-signal biten
 
 @export var lowspeed = 100
 @export var highspeed = 350
@@ -15,8 +14,11 @@ func _process(delta: float) -> void:
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 
-func _on_body_entered(_body: Node2D) -> void:
+
+func _on_body_entered(body: Node2D) -> void:
+	print("Bird detected collision with: ", body.name)
 	emit_signal("biten")
+	print("Signal emitted!")
 	hide()
 	set_process(false)
 	monitoring = false

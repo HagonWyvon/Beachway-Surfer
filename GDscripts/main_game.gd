@@ -8,6 +8,7 @@ func _ready():
 	#newGame()
 
 func _on_shark_biten():
+	print("Signal Main Received")
 	score += 10
 
 
@@ -28,12 +29,12 @@ func gameOver():
 
 func _on_mob_spawn_timer_timeout() -> void:
 	var mob = BirdScene.instantiate()
-	
-	mob.connect("biten", Callable(self, "_on_shark_biten"))
-
 	var mobSpawnLocation = $BirdSpawn/BirdLocation
 	mobSpawnLocation.progress_ratio = randf()
 	mob.position = mobSpawnLocation.position
+
+	mob.connect("biten", Callable(self, "_on_shark_biten"))
+	
 	add_child(mob)
 
 
