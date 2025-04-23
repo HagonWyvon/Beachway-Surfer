@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://d3446qnhg3cxc"]
+[gd_scene load_steps=131 format=3 uid="uid://d3446qnhg3cxc"]
 
 [ext_resource type="Script" uid="uid://cwni6wiqkv24j" path="res://GDscripts/player.gd" id="1_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://fj3upfn1r8fw" path="res://assets/booster/WaterBall - Startup and Infinite.png" id="2_boad6"]
@@ -878,10 +878,6 @@ animations = [{
 "speed": 30.0
 }]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_hg6s5"]
-a = Vector2(-24, 0)
-b = Vector2(24, 0)
-
 [node name="Player" type="Node2D"]
 script = ExtResource("1_qjkh3")
 
@@ -900,7 +896,6 @@ texture = SubResource("GradientTexture2D_hg6s5")
 offset = Vector2(0, -182)
 
 [node name="Shark" parent="Mask" instance=ExtResource("7_boad6")]
-can_sleep = true
 height = -100
 
 [node name="BoosterFever" type="AnimatedSprite2D" parent="."]
@@ -916,15 +911,6 @@ animation = &"start_up2"
 
 [node name="JumpReady" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_hg6s5")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-visible = false
-position = Vector2(0, 13)
-gravity_scale = 0.0
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("SegmentShape2D_hg6s5")
 
 [connection signal="timeout" from="Timer/JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="water" from="Mask/Shark" to="." method="_on_shark_water"]
