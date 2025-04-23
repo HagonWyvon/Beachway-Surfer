@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd8imhci6wyom"]
+
+[ext_resource type="Script" uid="uid://dmfyih6kh405b" path="res://GDscripts/UI_button.gd" id="1_f44cr"]
+[ext_resource type="AudioStream" uid="uid://dms2wlbhmisre" path="res://sfx/MenuSFX/menu-selection-102220.wav" id="1_kuu68"]
+
+[node name="Control" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f44cr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_kuu68")
+volume_db = -5.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -22,11 +22,11 @@ func _process(delta):
 		$Jump.animation = "start_up1"
 		$Jump.show()
 		$Jump.play()
-		
+
 		$Mask/Shark.dive(10)
-		
+
 		$Timer/JumpTimer.start()
-	
+
 	if Input.is_action_just_released("jump") && holding:
 		$Jump.offset.y = -36
 		jumpable = false

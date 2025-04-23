@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bo6bkuh2emu7i" path="res://TheGame/parallax_background.tscn" id="1_gfqty"]
 [ext_resource type="Script" uid="uid://bl5cir2b8xjtf" path="res://GDscripts/main_game.gd" id="1_lweib"]
 [ext_resource type="PackedScene" uid="uid://bljy3a28ikt40" path="res://enemies/birdEnemy.tscn" id="2_1j64x"]
-[ext_resource type="PackedScene" uid="uid://crlfq6s8l7fvl" path="res://MainMenu/Menu.tscn" id="3_hrd1a"]
+[ext_resource type="PackedScene" uid="uid://crlfq6s8l7fvl" path="res://UI/Menu.tscn" id="3_hrd1a"]
 [ext_resource type="PackedScene" uid="uid://d3446qnhg3cxc" path="res://player/player.tscn" id="5_2r60g"]
 [ext_resource type="AudioStream" uid="uid://bv4dwc5iuhpmh" path="res://sfx/OceanSFX/ocean-waves-250310.mp3" id="6_hrd1a"]
 
@@ -18,8 +18,17 @@ script = ExtResource("1_lweib")
 BirdScene = ExtResource("2_1j64x")
 
 [node name="Menu" parent="." instance=ExtResource("3_hrd1a")]
-offset_top = -58.5
-offset_bottom = 58.5
+z_index = 999
+anchors_preset = -1
+anchor_left = 0.0967742
+anchor_top = 0.0833333
+anchor_right = 0.903226
+anchor_bottom = 0.916667
+offset_left = 150.0
+offset_top = 91.5
+offset_right = -150.0
+offset_bottom = -91.5
+metadata/_edit_use_anchors_ = true
 
 [node name="parallaxBackground" parent="." instance=ExtResource("1_gfqty")]
 
@@ -53,9 +62,6 @@ autoplay = true
 parameters/looping = false
 
 [connection signal="NewgameSigal" from="Menu" to="." method="_on_menu_newgame_sigal"]
-[connection signal="QuitgameSignal" from="Menu" to="." method="_on_menu_quitgame_signal"]
-[connection signal="SettingSignal" from="Menu" to="." method="_on_menu_setting_signal"]
-[connection signal="ShopSingal" from="Menu" to="." method="_on_menu_shop_singal"]
 [connection signal="timeout" from="Timer/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Timer/ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="Timer/MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

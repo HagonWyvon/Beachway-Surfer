@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtnqt8uj15d2"]
+
+[ext_resource type="Texture2D" uid="uid://6tde23lkguq2" path="res://assets/Texture_Source/GUI.png" id="1_dgx1j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0w4n"]
+atlas = ExtResource("1_dgx1j")
+region = Rect2(49, 97, 30, 30)
+
+[node name="Slot" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.0967742
+anchor_bottom = 0.166667
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_y0w4n")
+
+[node name="ICON" type="TextureRect" parent="."]
+layout_mode = 2
