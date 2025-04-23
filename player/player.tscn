@@ -900,6 +900,7 @@ texture = SubResource("GradientTexture2D_hg6s5")
 offset = Vector2(0, -182)
 
 [node name="Shark" parent="Mask" instance=ExtResource("7_boad6")]
+can_sleep = true
 height = -100
 
 [node name="BoosterFever" type="AnimatedSprite2D" parent="."]
@@ -917,6 +918,7 @@ animation = &"start_up2"
 stream = ExtResource("9_hg6s5")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+visible = false
 position = Vector2(0, 13)
 gravity_scale = 0.0
 metadata/_edit_group_ = true

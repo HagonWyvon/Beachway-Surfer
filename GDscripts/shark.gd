@@ -1,8 +1,7 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 signal water
 
-var velocity = Vector2.ZERO
 var airborne = false
 
 @export var jumprotation = 25

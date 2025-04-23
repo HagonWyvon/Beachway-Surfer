@@ -7,14 +7,16 @@ func _ready():
 	pass
 	#newGame()
 
-func _on_shark_biten():
+func _on_shark_bitten():
 	print("Signal Main Received")
 	score += 10
+	print("Bird colided")
+
 
 
 func _process(delta: float) -> void:
 	#get_last_exclusive_window().size = DisplayServer.screen_get_size();
-	print(score)
+	pass
 
 
 func newGame():
@@ -33,7 +35,7 @@ func _on_mob_spawn_timer_timeout() -> void:
 	mobSpawnLocation.progress_ratio = randf()
 	mob.position = mobSpawnLocation.position
 
-	mob.connect("biten", Callable(self, "_on_shark_biten"))
+	mob.bitten.connect(_on_shark_bitten)
 	
 	add_child(mob)
 
