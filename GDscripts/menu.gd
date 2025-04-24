@@ -30,6 +30,8 @@ func _on_playgame_pressed() -> void:
 	NewgameSigal.emit()
 	animationPlayer.play("hide_menu")
 	menuStat = false
+	
+	
 func _on_shop_pressed() -> void:
 	show_and_hide("shop","menu")
 func _on_setting_pressed() -> void:

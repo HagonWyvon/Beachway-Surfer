@@ -22,7 +22,7 @@ func dive(depth):
 	height = depth
 
 func _process(delta: float) -> void:
-	print(velocity.y)
+	#print(velocity.y)
 	if position.y < height:
 		airborne = true
 	if velocity.y > 0 && airborne:

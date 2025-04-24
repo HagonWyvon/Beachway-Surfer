@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccr5vwrk4f72p"]
+[gd_scene load_steps=9 format=3 uid="uid://ccr5vwrk4f72p"]
 
 [ext_resource type="PackedScene" uid="uid://bo6bkuh2emu7i" path="res://TheGame/parallax_background.tscn" id="1_gfqty"]
 [ext_resource type="Script" uid="uid://bl5cir2b8xjtf" path="res://GDscripts/main_game.gd" id="1_lweib"]
 [ext_resource type="PackedScene" uid="uid://bljy3a28ikt40" path="res://enemies/birdEnemy.tscn" id="2_1j64x"]
 [ext_resource type="PackedScene" uid="uid://crlfq6s8l7fvl" path="res://UI/Menu.tscn" id="3_hrd1a"]
+[ext_resource type="PackedScene" uid="uid://6mg5vlmwgvpr" path="res://UI/HUD.tscn" id="4_7l6lc"]
 [ext_resource type="PackedScene" uid="uid://d3446qnhg3cxc" path="res://player/player.tscn" id="5_2r60g"]
 [ext_resource type="AudioStream" uid="uid://bv4dwc5iuhpmh" path="res://sfx/OceanSFX/ocean-waves-250310.mp3" id="6_hrd1a"]
 
@@ -19,18 +20,21 @@ BirdScene = ExtResource("2_1j64x")
 
 [node name="Menu" parent="." instance=ExtResource("3_hrd1a")]
 z_index = 999
+offset_left = -250.0
+offset_right = 250.0
+
+[node name="HUD" parent="Menu" instance=ExtResource("4_7l6lc")]
+visible = false
+layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0967742
-anchor_top = 0.0833333
-anchor_right = 0.903226
-anchor_bottom = 0.916667
-offset_left = 150.0
-offset_top = 91.5
-offset_right = -150.0
-offset_bottom = -91.5
-metadata/_edit_use_anchors_ = true
+anchor_left = -0.084
+anchor_top = -0.0466667
+anchor_right = -0.084
+anchor_bottom = -0.0466667
+scale = Vector2(1.5, 1.5)
 
 [node name="parallaxBackground" parent="." instance=ExtResource("1_gfqty")]
+metadata/_edit_lock_ = true
 
 [node name="BirdSpawn" type="Path2D" parent="."]
 curve = SubResource("Curve2D_jx6g1")
@@ -40,7 +44,7 @@ position = Vector2(640, 272)
 rotation = -1.5708
 
 [node name="Player" parent="." instance=ExtResource("5_2r60g")]
-position = Vector2(-56, 336)
+position = Vector2(-50, 336)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(120, 336)
@@ -62,6 +66,7 @@ autoplay = true
 parameters/looping = false
 
 [connection signal="NewgameSigal" from="Menu" to="." method="_on_menu_newgame_sigal"]
+[connection signal="NewgameSigal" from="Menu" to="Menu/HUD" method="_on_menu_newgame_sigal"]
 [connection signal="timeout" from="Timer/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Timer/ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="Timer/MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
