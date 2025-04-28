@@ -135,6 +135,7 @@ script = ExtResource("1_ijstf")
 metadata/_edit_use_anchors_ = true
 
 [node name="BosterBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
 offset_top = 1.0
 offset_right = 52.0
 offset_bottom = 8.0
@@ -142,6 +143,7 @@ texture_under = SubResource("AtlasTexture_ijstf")
 texture_progress = SubResource("AtlasTexture_4n7mi")
 
 [node name="HungerBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
 offset_top = 9.0
 offset_right = 45.0
 offset_bottom = 16.0

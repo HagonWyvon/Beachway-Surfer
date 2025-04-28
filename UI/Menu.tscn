@@ -263,33 +263,32 @@ _data = {
 [node name="UI" type="Control"]
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -150.0
-offset_right = 100.0
-offset_bottom = 150.0
+anchor_left = 0.0967742
+anchor_top = 0.0833333
+anchor_right = 0.903226
+anchor_bottom = 0.916667
+offset_left = 150.0
+offset_right = -150.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_nuv2b")
 script = ExtResource("2_jefjr")
+metadata/_edit_use_anchors_ = true
 
 [node name="Menu" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(120, 150)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.389
-anchor_top = 0.281667
-anchor_right = 0.611
-anchor_bottom = 0.718333
-offset_left = 1.5
-offset_top = 4.99989
-offset_right = 1.5
-offset_bottom = 4.99991
+anchor_left = 0.38
+anchor_top = 0.25
+anchor_right = 0.62
+anchor_bottom = 0.75
+offset_left = 6.0
+offset_top = 14.4999
+offset_right = 6.0
+offset_bottom = 14.4999
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_o5td3")
@@ -304,39 +303,35 @@ metadata/_edit_group_ = true
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -40.5
-offset_right = 44.0
-offset_bottom = 41.5
+anchors_preset = -1
+anchor_left = 0.0833333
+anchor_top = 0.0866667
+anchor_right = 0.916667
+anchor_bottom = 0.913333
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="PLAYGAME" parent="Menu/VBoxContainer" instance=ExtResource("5_3qhay")]
 layout_mode = 2
-text = "PLAY"
+text = " PLAY"
 
 [node name="SHOP" parent="Menu/VBoxContainer" instance=ExtResource("5_3qhay")]
 layout_mode = 2
-text = "SHOP
-"
+text = " SHOP"
 
 [node name="SETTING" parent="Menu/VBoxContainer" instance=ExtResource("5_3qhay")]
 layout_mode = 2
-text = "SETTING"
+text = " SETTING"
 
 [node name="QUIT" parent="Menu/VBoxContainer" instance=ExtResource("5_3qhay")]
 layout_mode = 2
-text = "QUIT
-"
+text = " QUIT"
 
 [node name="SHOP" type="NinePatchRect" parent="."]
 visible = false
@@ -367,6 +362,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="SHOP/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_font_sizes/font_size = 36
 text = "SHOP"
 horizontal_alignment = 1
@@ -500,7 +497,6 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
-metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SETTING"]
 layout_mode = 1
@@ -516,7 +512,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Label" type="Label" parent="SETTING/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 32
 text = "SETTING"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -528,7 +524,7 @@ size_flags_vertical = 3
 [node name="Settings" type="VBoxContainer" parent="SETTING/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_vertical = 0
 
 [node name="Label" type="Label" parent="SETTING/VBoxContainer/HBoxContainer/Settings"]
 layout_mode = 2
@@ -542,25 +538,24 @@ text = "SFX Volume"
 layout_mode = 2
 text = "Game Volume"
 
-[node name="Label4" type="Label" parent="SETTING/VBoxContainer/HBoxContainer/Settings"]
-layout_mode = 2
-
 [node name="properties" type="VBoxContainer" parent="SETTING/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="SETTING/VBoxContainer/HBoxContainer/properties"]
+[node name="res_opt_btn" type="OptionButton" parent="SETTING/VBoxContainer/HBoxContainer/properties"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-text = "ok"
+size_flags_horizontal = 5
+theme_override_font_sizes/font_size = 0
+theme_override_constants/arrow_margin = 13
+alignment = 1
+fit_to_longest_item = false
 
 [node name="Label2" type="Label" parent="SETTING/VBoxContainer/HBoxContainer/properties"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="SETTING/VBoxContainer/HBoxContainer/properties"]
-layout_mode = 2
-
-[node name="Label4" type="Label" parent="SETTING/VBoxContainer/HBoxContainer/properties"]
 layout_mode = 2
 
 [node name="BackBtn" parent="SETTING/VBoxContainer" instance=ExtResource("5_3qhay")]
@@ -582,4 +577,5 @@ autoplay = "RESET"
 [connection signal="pressed" from="Menu/VBoxContainer/SETTING" to="." method="_on_setting_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="SHOP/VBoxContainer/backBtn" to="." method="_on_shop_back_btn_pressed"]
+[connection signal="item_selected" from="SETTING/VBoxContainer/HBoxContainer/properties/res_opt_btn" to="." method="_on_res_opt_btn_item_selected"]
 [connection signal="pressed" from="SETTING/VBoxContainer/BackBtn" to="." method="_on_setting_back_btn_pressed"]

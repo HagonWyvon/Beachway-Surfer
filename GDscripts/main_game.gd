@@ -24,6 +24,7 @@ func _on_shark_bitten():
 
 func update_scaling():
 	if score >= initial_scale_threshold:
+		@warning_ignore("integer_division")
 		current_scale = base_speed * (1 + difficulty_curve * log(score / initial_scale_threshold))
 		
 		current_score_increment = ceil(base_score_increment * current_scale)
@@ -34,13 +35,14 @@ func update_scaling():
 			current_scale += 0.05
 			threshold_increment = max(50, threshold_increment * 0.95)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Update timer based on current scale
 	$Timer/MobSpawnTimer.wait_time = 1/current_scale
-	$Score.text = str(score)
+	$Menu/Score.text = str(score)
+	changeBGbyScore(score)
 
 func newGame():
-	score = 0
+	score = 0;$Menu/Score.show()
 	current_scale = 1.0
 	scale_threshold = initial_scale_threshold
 	$Player.start($PlayerSpawn.position)
@@ -67,5 +69,16 @@ func _on_start_timer_timeout() -> void:
 	$Timer/MobSpawnTimer.start()
 	$Timer/ScoreTimer.start()
 
+#
+func changeBGbyScore(Score):
+	if Score > -1:
+		$parallaxBackground.changeBackground(1)
+	if  Score >= 200:
+		$parallaxBackground.changeBackground(2)
+	if Score >= 300:
+		$parallaxBackground.changeBackground(3)
+	if Score >= 500:
+		$parallaxBackground.changeBackground(4)
+		
 func _on_menu_newgame_sigal() -> void:
 	newGame()

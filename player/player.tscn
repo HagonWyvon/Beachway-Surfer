@@ -879,6 +879,7 @@ animations = [{
 }]
 
 [node name="Player" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_qjkh3")
 
 [node name="Timer" type="Node" parent="."]
@@ -892,20 +893,24 @@ one_shot = true
 
 [node name="Mask" type="Sprite2D" parent="."]
 clip_children = 1
+texture_filter = 1
 texture = SubResource("GradientTexture2D_hg6s5")
 offset = Vector2(0, -182)
 
 [node name="Shark" parent="Mask" instance=ExtResource("7_boad6")]
+texture_filter = 1
 height = -100
 
 [node name="BoosterFever" type="AnimatedSprite2D" parent="."]
 visible = false
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_3dxkp")
 animation = &"boosted"
 frame_progress = 0.623115
 
 [node name="Jump" type="AnimatedSprite2D" parent="."]
 visible = false
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_48p26")
 animation = &"start_up2"
 

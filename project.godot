@@ -21,10 +21,7 @@ config/icon="uid://pcyb2866jt86"
 
 window/size/viewport_width=620
 window/size/viewport_height=360
-window/size/window_width_override=1660
-window/size/window_height_override=900
-window/stretch/mode="canvas_items"
-window/stretch/scale_mode="integer"
+window/stretch/mode="viewport"
 
 [editor]
 
@@ -49,7 +46,6 @@ folder_colors={
 [gui]
 
 theme/custom_font="uid://5wb57hspkh3d"
-theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 

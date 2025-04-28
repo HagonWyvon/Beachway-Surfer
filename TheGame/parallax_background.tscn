@@ -11,11 +11,12 @@ script = ExtResource("1_jbber")
 
 [node name="blueskyBackground" type="ParallaxBackground" parent="."]
 auto_translate_mode = 1
+scroll_ignore_camera_zoom = true
 
 [node name="bluesky" type="Parallax2D" parent="blueskyBackground"]
 scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(640, 0)
-autoscroll = Vector2(-26, 0)
+autoscroll = Vector2(-25, 0)
 repeat_times = 2
 ignore_camera_scroll = true
 
@@ -39,7 +40,7 @@ texture = ExtResource("3_50yks")
 [node name="cloud" type="Parallax2D" parent="blueskyBackground"]
 scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(640, 0)
-autoscroll = Vector2(-26, 0)
+autoscroll = Vector2(-25, 0)
 repeat_times = 2
 ignore_camera_scroll = true
 
