@@ -71,14 +71,16 @@ func _on_start_timer_timeout() -> void:
 
 #
 func changeBGbyScore(Score):
-	if Score > -1:
-		$parallaxBackground.changeBackground(1)
-	if  Score >= 200:
-		$parallaxBackground.changeBackground(2)
-	if Score >= 300:
-		$parallaxBackground.changeBackground(3)
-	if Score >= 500:
-		$parallaxBackground.changeBackground(4)
+	pass
+	#tạm thời bỏ 
+	#if Score > -1:
+		#$parallaxBackground.changeBackground(1)
+	#if  Score >= 200:
+		#$parallaxBackground.changeBackground(2)
+	#if Score >= 300:
+		#$parallaxBackground.changeBackground(3)
+	#if Score >= 500:
+		#$parallaxBackground.changeBackground(4)
 		
 func _on_menu_newgame_sigal() -> void:
 	newGame()

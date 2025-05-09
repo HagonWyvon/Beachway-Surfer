@@ -50,6 +50,6 @@ func changeBackground(WhichCloud): #Score/Time
 
 
 func _ready() -> void:
-	$blueskyBackground/bluesky/Sprite2D.scale.y = 1.5
-	print($blueskyBackground/bluesky/Sprite2D.scale.y)
+	#$blueskyBackground/bluesky/Sprite2D.scale.y = 1.5
+	#print($blueskyBackground/bluesky/Sprite2D.scale.y)
 	changeBackground(backgroundNum)
