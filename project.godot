@@ -17,6 +17,10 @@ run/main_scene="uid://ccr5vwrk4f72p"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://pcyb2866jt86"
 
+[autoload]
+
+Database="*res://GDscripts/database.gd"
+
 [display]
 
 window/size/viewport_width=620

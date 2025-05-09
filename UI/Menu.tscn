@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://6tde23lkguq2" path="res://assets/Texture_Source/GUI.png" id="3_o5td3"]
 [ext_resource type="PackedScene" uid="uid://bd8imhci6wyom" path="res://UI/BUTTON.tscn" id="5_3qhay"]
 [ext_resource type="Script" uid="uid://lnx8vtc75mgj" path="res://GDscripts/shop.gd" id="5_gj576"]
-[ext_resource type="PackedScene" uid="uid://dtnqt8uj15d2" path="res://UI/itemSlot.tscn" id="6_gj576"]
+[ext_resource type="Texture2D" uid="uid://qhii2wkp1m6b" path="res://assets/UI/PreviewBG/BG1.jpg" id="7_ildal"]
 
 [sub_resource type="Animation" id="Animation_gj576"]
 length = 0.001
@@ -443,7 +443,6 @@ anchor_right = 0.98871
 anchor_bottom = 0.983333
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="SHOP/VBoxContainer"]
 layout_mode = 2
@@ -479,10 +478,6 @@ size_flags_vertical = 0
 columns = 4
 metadata/_edit_lock_ = true
 
-[node name="Slot" parent="SHOP/VBoxContainer/Container/ItemContainer" instance=ExtResource("6_gj576")]
-visible = false
-layout_mode = 2
-
 [node name="InfoContainer" type="NinePatchRect" parent="SHOP/VBoxContainer/Container"]
 layout_mode = 2
 anchor_left = 0.485656
@@ -503,16 +498,23 @@ axis_stretch_vertical = 2
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SHOP/VBoxContainer/Container/InfoContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SHOP/VBoxContainer/Container/InfoContainer"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0283019
-anchor_top = 0.0314465
-anchor_right = 0.981132
-anchor_bottom = 0.968553
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -3.99997
+offset_bottom = -3.99995
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+
+[node name="IMGContainer" type="TextureRect" parent="SHOP/VBoxContainer/Container/InfoContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("7_ildal")
+expand_mode = 1
 
 [node name="backBtn" parent="SHOP/VBoxContainer" instance=ExtResource("5_3qhay")]
 custom_minimum_size = Vector2(60, 30)
