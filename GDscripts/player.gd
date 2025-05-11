@@ -2,8 +2,8 @@ extends Node2D
 
 var jumpable = false
 var holding = false
-@export var highjumpheight = 375
-@export var lowjumpheight = 250
+@export var highjumpheight = 350
+@export var lowjumpheight = 200
 
 func start(pos):
 	jumpable = true
@@ -15,8 +15,13 @@ func _ready():
 	$Jump.hide()
 
 func _process(delta):
+	if jumpable && !Input.is_action_pressed("jump") && $Mask/Shark.rotation_degrees == 0:
+		$WaterSpread.show()
+
+
 	if Input.is_action_just_pressed("jump") && jumpable:
 		holding = true
+		$WaterSpread.hide()
 		
 		$Jump.offset.y = 0
 		$Jump.animation = "start_up1"
@@ -30,10 +35,12 @@ func _process(delta):
 	if Input.is_action_just_released("jump") && holding:
 		$Jump.offset.y = -36
 		jumpable = false
+		$WaterSpread.hide()
 		
 		if !$Timer/JumpTimer.is_stopped():
 			$Jump.animation = "lowjump"
-			$Mask/Shark.jump(-lowjumpheight,"low")
+			var addedjump = 50 *  (1 - $Timer/JumpTimer.time_left)
+			$Mask/Shark.jump(-lowjumpheight - addedjump,"low")
 			$Timer/JumpTimer.stop()
 		else:
 			$Jump.animation = "highjump"
@@ -45,7 +52,7 @@ func _process(delta):
 func _on_jump_timer_timeout() -> void:
 	$Jump.animation = "start_up2"
 	$Jump.play()
-	$JumpReady.play()
+	$JumpReadySfx.play()
 
 
 func _on_shark_water() -> void:
