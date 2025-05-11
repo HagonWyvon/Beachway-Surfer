@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=3 uid="uid://d3446qnhg3cxc"]
+[gd_scene load_steps=142 format=3 uid="uid://d3446qnhg3cxc"]
 
 [ext_resource type="Script" uid="uid://cwni6wiqkv24j" path="res://GDscripts/player.gd" id="1_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://deuckh6d4l6js" path="res://assets/OG/cooking water/watersplash.png" id="2_8t03j"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bko628trdv1ud" path="res://assets/jump/Water StartUp 2 SpriteSheet (30 Fps).png" id="7_rgyib"]
 [ext_resource type="Texture2D" uid="uid://yfoclrycbe07" path="res://assets/jump/Water StartUp 1 SpriteSheet(30fps).png" id="8_ebec5"]
 [ext_resource type="AudioStream" uid="uid://0xdn1fucsbok" path="res://sfx/Hagons_SFX/powerUp.wav" id="9_hg6s5"]
+[ext_resource type="AudioStream" uid="uid://baekc3aj4h6f5" path="res://sfx/DeathSFX/Taco-Bell-Bong-Sound-Effect-HD.wav" id="11_2ieo8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbpvf"]
 atlas = ExtResource("2_8t03j")
@@ -988,8 +989,14 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_48p26")
 animation = &"start_up2"
 
-[node name="JumpReadySfx" type="AudioStreamPlayer" parent="."]
+[node name="SFX" type="Node" parent="."]
+
+[node name="JumpReadySfx" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("9_hg6s5")
+volume_db = -20.0
+
+[node name="DeathSfx" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_2ieo8")
 volume_db = -20.0
 
 [connection signal="timeout" from="Timer/JumpTimer" to="." method="_on_jump_timer_timeout"]

@@ -1,5 +1,7 @@
 extends Node
 
+@export var birdfoodreward = 10
+
 @export var BirdScene: PackedScene
 @export var base_speed: float = 1.0
 @export var difficulty_curve: float = 0.15
@@ -20,9 +22,10 @@ func _ready():
 	pass
 	#newGame()
 
-func _on_shark_bitten():
+func _on_bird_shark_bitten():
 	score += current_bite_reward
 	update_scaling()
+	$Player.eat(birdfoodreward)
 
 func update_level():
 	var previous_level = current_level
@@ -110,7 +113,7 @@ func _on_mob_spawn_timer_timeout() -> void:
 	var mobSpawnLocation = $BirdSpawn/BirdLocation
 	mobSpawnLocation.progress_ratio = randf()
 	mob.position = mobSpawnLocation.position
-	mob.bitten.connect(_on_shark_bitten)
+	mob.bitten.connect(_on_bird_shark_bitten)
 	mob.speedincrease(current_scale) 
 	add_child(mob)
 
