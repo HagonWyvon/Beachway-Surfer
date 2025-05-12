@@ -43,16 +43,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="parallaxBackground" parent="." instance=ExtResource("1_gfqty")]
-backgroundNum = 3
-metadata/_edit_lock_ = true
-
 [node name="BirdSpawn" type="Path2D" parent="."]
 curve = SubResource("Curve2D_jx6g1")
 
 [node name="BirdLocation" type="PathFollow2D" parent="BirdSpawn"]
 position = Vector2(640, 272)
 rotation = -1.5708
+
+[node name="parallaxBackground" parent="." instance=ExtResource("1_gfqty")]
+backgroundNum = 3
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("5_2r60g")]
 position = Vector2(-50, 336)
@@ -78,6 +78,7 @@ parameters/looping = true
 
 [connection signal="NewgameSigal" from="Menu" to="." method="_on_menu_newgame_sigal"]
 [connection signal="NewgameSigal" from="Menu" to="Menu/HUD" method="_on_menu_newgame_sigal"]
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="timeout" from="Timer/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Timer/ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="Timer/MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

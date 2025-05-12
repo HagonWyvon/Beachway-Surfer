@@ -1,11 +1,39 @@
 extends Node2D
 
+signal dead
+var death = false
+var starthunger = false
+
 var jumpable = false
 var holding = false
-@export var highjumpheight = 375
-@export var lowjumpheight = 250
+@export var highjumpheight = 350
+@export var midjump = 30
+@export var lowjumpheight = 200
+
+@export var maxhunger = 150
+@export var hunger = 100
+@export var hungerrate = 2.5
+
+var burst = 0
+@export var burstactivate = 3
+@export var burstreward = 1
+
+func bursting():
+	pass
+
+func eat(food):
+	hunger += food
+	if hunger > maxhunger:
+		hunger = maxhunger
+		burst += burstreward
+
+func deadShark():
+	dead.emit()
+	$DeathSfx.play()
+	death = true
 
 func start(pos):
+	starthunger = true
 	jumpable = true
 	position = pos
 	show()
@@ -15,8 +43,20 @@ func _ready():
 	$Jump.hide()
 
 func _process(delta):
-	if Input.is_action_just_pressed("jump") && jumpable:
+	if hunger <= 0 && !death:
+		deadShark()
+		
+	if !death && starthunger:
+		hunger -= hungerrate*delta
+		print(hunger)
+	
+	if jumpable && !Input.is_action_pressed("jump") && $Mask/Shark.rotation_degrees == 0:
+		$WaterSpread.show()
+
+
+	if Input.is_action_just_pressed("jump") && jumpable && !death:
 		holding = true
+		$WaterSpread.hide()
 		
 		$Jump.offset.y = 0
 		$Jump.animation = "start_up1"
@@ -27,13 +67,15 @@ func _process(delta):
 
 		$Timer/JumpTimer.start()
 
-	if Input.is_action_just_released("jump") && holding:
+	if Input.is_action_just_released("jump") && holding && !death:
 		$Jump.offset.y = -36
 		jumpable = false
+		$WaterSpread.hide()
 		
 		if !$Timer/JumpTimer.is_stopped():
 			$Jump.animation = "lowjump"
-			$Mask/Shark.jump(-lowjumpheight,"low")
+			var addedjump = midjump *  (1 - $Timer/JumpTimer.time_left)
+			$Mask/Shark.jump(-lowjumpheight - addedjump,"low")
 			$Timer/JumpTimer.stop()
 		else:
 			$Jump.animation = "highjump"
@@ -45,7 +87,7 @@ func _process(delta):
 func _on_jump_timer_timeout() -> void:
 	$Jump.animation = "start_up2"
 	$Jump.play()
-	$JumpReady.play()
+	$JumpReadySfx.play()
 
 
 func _on_shark_water() -> void:

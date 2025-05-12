@@ -1,6 +1,7 @@
-[gd_scene load_steps=131 format=3 uid="uid://d3446qnhg3cxc"]
+[gd_scene load_steps=142 format=3 uid="uid://d3446qnhg3cxc"]
 
 [ext_resource type="Script" uid="uid://cwni6wiqkv24j" path="res://GDscripts/player.gd" id="1_qjkh3"]
+[ext_resource type="Texture2D" uid="uid://deuckh6d4l6js" path="res://assets/OG/cooking water/watersplash.png" id="2_8t03j"]
 [ext_resource type="Texture2D" uid="uid://fj3upfn1r8fw" path="res://assets/booster/WaterBall - Startup and Infinite.png" id="2_boad6"]
 [ext_resource type="Texture2D" uid="uid://ba5xixlha1ifs" path="res://assets/booster/WaterBall - Impact.png" id="3_rgyib"]
 [ext_resource type="Texture2D" uid="uid://cxijqhdl4ycrh" path="res://assets/jump/Water Spike 01 - SpriteSheet.png" id="6_8t03j"]
@@ -9,6 +10,71 @@
 [ext_resource type="Texture2D" uid="uid://bko628trdv1ud" path="res://assets/jump/Water StartUp 2 SpriteSheet (30 Fps).png" id="7_rgyib"]
 [ext_resource type="Texture2D" uid="uid://yfoclrycbe07" path="res://assets/jump/Water StartUp 1 SpriteSheet(30fps).png" id="8_ebec5"]
 [ext_resource type="AudioStream" uid="uid://0xdn1fucsbok" path="res://sfx/Hagons_SFX/powerUp.wav" id="9_hg6s5"]
+[ext_resource type="AudioStream" uid="uid://baekc3aj4h6f5" path="res://sfx/DeathSFX/Taco-Bell-Bong-Sound-Effect-HD.wav" id="11_2ieo8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbpvf"]
+atlas = ExtResource("2_8t03j")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68g1w"]
+atlas = ExtResource("2_8t03j")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1060"]
+atlas = ExtResource("2_8t03j")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uju0u"]
+atlas = ExtResource("2_8t03j")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckf88"]
+atlas = ExtResource("2_8t03j")
+region = Rect2(64, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciyjg"]
+atlas = ExtResource("2_8t03j")
+region = Rect2(128, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xi0n"]
+atlas = ExtResource("2_8t03j")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hioli"]
+atlas = ExtResource("2_8t03j")
+region = Rect2(64, 128, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e5mnx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbpvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68g1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1060")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uju0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckf88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciyjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xi0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hioli")
+}],
+"loop": true,
+"name": &"swimming",
+"speed": 10.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_rgyib"]
 
@@ -891,6 +957,15 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="WaterSpread" type="AnimatedSprite2D" parent="."]
+position = Vector2(-22, -2)
+rotation = 1.5708
+scale = Vector2(0.56, 1)
+sprite_frames = SubResource("SpriteFrames_e5mnx")
+animation = &"swimming"
+autoplay = "swimming"
+frame_progress = 0.48366
+
 [node name="Mask" type="Sprite2D" parent="."]
 clip_children = 1
 texture_filter = 1
@@ -914,8 +989,12 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_48p26")
 animation = &"start_up2"
 
-[node name="JumpReady" type="AudioStreamPlayer" parent="."]
+[node name="JumpReadySfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_hg6s5")
+volume_db = -20.0
+
+[node name="DeathSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_2ieo8")
 volume_db = -20.0
 
 [connection signal="timeout" from="Timer/JumpTimer" to="." method="_on_jump_timer_timeout"]

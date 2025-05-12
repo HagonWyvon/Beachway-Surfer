@@ -1,5 +1,7 @@
 extends Node
 
+@export var birdfoodreward = 10
+
 @export var BirdScene: PackedScene
 @export var base_speed: float = 1.0
 @export var difficulty_curve: float = 0.15
@@ -20,9 +22,10 @@ func _ready():
 	pass
 	#newGame()
 
-func _on_shark_bitten():
+func _on_bird_shark_bitten():
 	score += current_bite_reward
 	update_scaling()
+	$Player.eat(birdfoodreward)
 
 func update_level():
 	var previous_level = current_level
@@ -80,11 +83,8 @@ func changeLevel():
 	pass
 
 func _process(_delta: float) -> void:
-	# Update timer based on current scale
-	$Timer/MobSpawnTimer.wait_time = 1/current_scale
 	
 	$Menu/Score.text = str(score)
-	changeBGbyScore(score)
 	
 	# Update time display
 	var minutes = floor(game_time / 60)
@@ -110,7 +110,7 @@ func _on_mob_spawn_timer_timeout() -> void:
 	var mobSpawnLocation = $BirdSpawn/BirdLocation
 	mobSpawnLocation.progress_ratio = randf()
 	mob.position = mobSpawnLocation.position
-	mob.bitten.connect(_on_shark_bitten)
+	mob.bitten.connect(_on_bird_shark_bitten)
 	mob.speedincrease(current_scale) 
 	add_child(mob)
 
@@ -124,18 +124,10 @@ func _on_start_timer_timeout() -> void:
 	$Timer/MobSpawnTimer.start()
 	$Timer/ScoreTimer.start()
 
-#
-func changeBGbyScore(Score):
-	pass
-	#tạm thời bỏ 
-	#if Score > -1:
-		#$parallaxBackground.changeBackground(1)
-	#if  Score >= 200:
-		#$parallaxBackground.changeBackground(2)
-	#if Score >= 300:
-		#$parallaxBackground.changeBackground(3)
-	#if Score >= 500:
-		#$parallaxBackground.changeBackground(4)
-		
+
 func _on_menu_newgame_sigal() -> void:
 	newGame()
+
+
+func _on_player_dead() -> void:
+	gameOver()
