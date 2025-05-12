@@ -83,11 +83,8 @@ func changeLevel():
 	pass
 
 func _process(_delta: float) -> void:
-	# Update timer based on current scale
-	$Timer/MobSpawnTimer.wait_time = 1/current_scale
 	
 	$Menu/Score.text = str(score)
-	changeBGbyScore(score)
 	
 	# Update time display
 	var minutes = floor(game_time / 60)
@@ -127,18 +124,10 @@ func _on_start_timer_timeout() -> void:
 	$Timer/MobSpawnTimer.start()
 	$Timer/ScoreTimer.start()
 
-#
-func changeBGbyScore(Score):
-	pass
-	#tạm thời bỏ 
-	#if Score > -1:
-		#$parallaxBackground.changeBackground(1)
-	#if  Score >= 200:
-		#$parallaxBackground.changeBackground(2)
-	#if Score >= 300:
-		#$parallaxBackground.changeBackground(3)
-	#if Score >= 500:
-		#$parallaxBackground.changeBackground(4)
-		
+
 func _on_menu_newgame_sigal() -> void:
 	newGame()
+
+
+func _on_player_dead() -> void:
+	gameOver()

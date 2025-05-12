@@ -1,7 +1,7 @@
 extends Node2D
 
 signal dead
-var deadshark = false
+var death = false
 var starthunger = false
 
 var jumpable = false
@@ -10,18 +10,27 @@ var holding = false
 @export var midjump = 30
 @export var lowjumpheight = 200
 
-@export var maxhunger = 200
+@export var maxhunger = 150
 @export var hunger = 100
 @export var hungerrate = 2.5
 
+var burst = 0
+@export var burstactivate = 3
+@export var burstreward = 1
+
+func bursting():
+	pass
 
 func eat(food):
 	hunger += food
+	if hunger > maxhunger:
+		hunger = maxhunger
+		burst += burstreward
 
 func deadShark():
 	dead.emit()
-	$SFX/DeathSfx.play()
-	deadshark = true
+	$DeathSfx.play()
+	death = true
 
 func start(pos):
 	starthunger = true
@@ -34,10 +43,10 @@ func _ready():
 	$Jump.hide()
 
 func _process(delta):
-	if hunger <= 0:
+	if hunger <= 0 && !death:
 		deadShark()
 		
-	if !deadshark && starthunger:
+	if !death && starthunger:
 		hunger -= hungerrate*delta
 		print(hunger)
 	
@@ -45,7 +54,7 @@ func _process(delta):
 		$WaterSpread.show()
 
 
-	if Input.is_action_just_pressed("jump") && jumpable:
+	if Input.is_action_just_pressed("jump") && jumpable && !death:
 		holding = true
 		$WaterSpread.hide()
 		
@@ -58,7 +67,7 @@ func _process(delta):
 
 		$Timer/JumpTimer.start()
 
-	if Input.is_action_just_released("jump") && holding:
+	if Input.is_action_just_released("jump") && holding && !death:
 		$Jump.offset.y = -36
 		jumpable = false
 		$WaterSpread.hide()
@@ -78,7 +87,7 @@ func _process(delta):
 func _on_jump_timer_timeout() -> void:
 	$Jump.animation = "start_up2"
 	$Jump.play()
-	$SFX/JumpReadySfx.play()
+	$JumpReadySfx.play()
 
 
 func _on_shark_water() -> void:
