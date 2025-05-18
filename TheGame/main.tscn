@@ -73,7 +73,9 @@ one_shot = true
 
 [node name="MainMenuTheme" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("6_hrd1a")
+volume_db = -40.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="NewgameSigal" from="Menu" to="." method="_on_menu_newgame_sigal"]

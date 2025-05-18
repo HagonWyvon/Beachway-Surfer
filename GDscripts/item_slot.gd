@@ -6,6 +6,6 @@ extends PanelContainer
 var SignalBus = Database.ItemClick
 func _on_button_pressed() -> void:
 	SignalBus.emit(ItemName)
-
+	
 			
 		

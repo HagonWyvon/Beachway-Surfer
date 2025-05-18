@@ -19,6 +19,7 @@ func LoadItem(_ListItem):
 		var child_node = ItemSlot.instantiate()
 		child_node.name = item
 		item_container.add_child(child_node)
+		
 func _on_item_click(this):
 	#print("damn this is working")
 	var choosenItem = this.name
