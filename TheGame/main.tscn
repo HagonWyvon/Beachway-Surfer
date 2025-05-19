@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccr5vwrk4f72p"]
+[gd_scene load_steps=10 format=3 uid="uid://ccr5vwrk4f72p"]
 
 [ext_resource type="PackedScene" uid="uid://bo6bkuh2emu7i" path="res://TheGame/parallax_background.tscn" id="1_gfqty"]
 [ext_resource type="Script" uid="uid://bl5cir2b8xjtf" path="res://GDscripts/main_game.gd" id="1_lweib"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://6mg5vlmwgvpr" path="res://UI/HUD.tscn" id="4_7l6lc"]
 [ext_resource type="PackedScene" uid="uid://d3446qnhg3cxc" path="res://player/player.tscn" id="5_2r60g"]
 [ext_resource type="AudioStream" uid="uid://bv4dwc5iuhpmh" path="res://sfx/OceanSFX/ocean-waves-250310.mp3" id="6_hrd1a"]
+[ext_resource type="PackedScene" uid="uid://b2xh6s6yuei4f" path="res://UI/transition_screen.tscn" id="6_vy185"]
 
 [sub_resource type="Curve2D" id="Curve2D_jx6g1"]
 _data = {
@@ -21,8 +22,9 @@ BirdScene = ExtResource("2_1j64x")
 [node name="Menu" parent="." instance=ExtResource("3_hrd1a")]
 z_index = 999
 
-[node name="HUD" parent="Menu" instance=ExtResource("4_7l6lc")]
-visible = false
+[node name="BAR" parent="Menu" instance=ExtResource("4_7l6lc")]
+z_index = -999
+z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.084
@@ -32,7 +34,6 @@ anchor_bottom = -0.0466667
 scale = Vector2(1.5, 1.5)
 
 [node name="Score" type="Label" parent="Menu"]
-visible = false
 layout_mode = 0
 anchor_left = 1.002
 anchor_top = -0.0433333
@@ -53,6 +54,8 @@ rotation = -1.5708
 [node name="parallaxBackground" parent="." instance=ExtResource("1_gfqty")]
 backgroundNum = 3
 metadata/_edit_lock_ = true
+
+[node name="transition screen" parent="parallaxBackground" instance=ExtResource("6_vy185")]
 
 [node name="Player" parent="." instance=ExtResource("5_2r60g")]
 position = Vector2(-50, 336)
@@ -79,8 +82,7 @@ bus = &"Music"
 parameters/looping = true
 
 [connection signal="NewgameSigal" from="Menu" to="." method="_on_menu_newgame_sigal"]
-[connection signal="NewgameSigal" from="Menu" to="Menu/HUD" method="_on_menu_newgame_sigal"]
-[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="NewgameSigal" from="Menu" to="Menu/BAR" method="_on_menu_newgame_sigal"]
 [connection signal="timeout" from="Timer/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Timer/ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="Timer/MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

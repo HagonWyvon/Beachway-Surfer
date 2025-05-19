@@ -14,7 +14,7 @@ func _ready() -> void:
 	value = db_to_linear(
 		AudioServer.get_bus_volume_db(Bus_index)
 	)
-	h_slider.value = 10 #property need to store
+	h_slider.value = 8 #property need to store
 	
 func _on_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(

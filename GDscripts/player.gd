@@ -1,6 +1,7 @@
 extends Node2D
 
-signal dead
+var deademit = Database.playerDeath
+var Singalemit = Database.HungerPt
 var death = false
 var starthunger = false
 
@@ -12,7 +13,7 @@ var holding = false
 
 @export var maxhunger = 150
 @export var hunger = 100
-@export var hungerrate = 2.5
+@export var hungerrate = 10.5
 
 var burst = 0
 @export var burstactivate = 3
@@ -28,7 +29,7 @@ func eat(food):
 		burst += burstreward
 
 func deadShark():
-	dead.emit()
+	deademit.emit()
 	$DeathSfx.play()
 	death = true
 
@@ -48,6 +49,7 @@ func _process(delta):
 		
 	if !death && starthunger:
 		hunger -= hungerrate*delta
+		Singalemit.emit(hunger)
 		print(hunger)
 	
 	if jumpable && !Input.is_action_pressed("jump") && $Mask/Shark.rotation_degrees == 0:

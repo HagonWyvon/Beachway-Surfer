@@ -1,6 +1,11 @@
 extends Node
 
 signal ItemClick
+signal HungerPt
+signal playerDeath
+signal replay
+signal backtomenuOndeath
+
 var ListItem = {
 	"ITEM1":{
 		"BackgroundNum": "1",

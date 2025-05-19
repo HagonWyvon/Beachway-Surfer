@@ -6,6 +6,8 @@ signal NewgameSigal
 @onready var animationPlayer = $AnimationPlayer
 @onready var SHOP = $SHOP
 @onready var res_opt_btn: OptionButton = $SETTING/VBoxContainer/HBoxContainer/properties/res_opt_btn
+@onready var replay: Control = $REPLAY
+
 var resolutions = {
 	"3840x2160": Vector2i(3840,2160),
 	"2560x1440": Vector2i(2560,1440),
@@ -19,10 +21,19 @@ var resolutions = {
 	"620x360": Vector2i(620,360)
 }
 var menuStat = true
-
+var PlayerDeathReceive = Database.playerDeath
+var ReplayReceive = Database.replay
+var BacktomenuReceive = Database.backtomenuOndeath
 func _ready() -> void:
+	#replay.visible = false
 	add_resolution()
 	update_resoluion()
+	
+	#
+	PlayerDeathReceive.connect(_on_player_death)
+	ReplayReceive.connect(_on_replay_pressed)
+	BacktomenuReceive.connect(_on_backtomenu_pressed)
+	
 	
 func add_resolution():
 	for res in resolutions:
@@ -73,7 +84,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		if menuStat == true or menuStat == false:
 			menuOn(menuStat)
-		elif menuStat == null:
+		elif menuStat == null and replay.visible == false:
 			if SHOP.visible == true:
 				show_and_hide("menu","shop")
 			else:
@@ -100,3 +111,14 @@ func _on_shop_back_btn_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+#
+func _on_player_death():
+	print("I'm surely he's dead")
+	animationPlayer.play("show_replay")
+	menuStat = null
+	
+func _on_replay_pressed():
+	animationPlayer.play("hide_replay")
+func _on_backtomenu_pressed():
+	show_and_hide("menu","replay")
