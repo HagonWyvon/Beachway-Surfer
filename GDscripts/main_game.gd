@@ -1,6 +1,6 @@
 extends Node
 
-@export var birdfoodreward = 10
+@export var birdfoodreward = 24
 
 @export var BoatScene: PackedScene
 @export var BirdScene: PackedScene
@@ -18,6 +18,8 @@ var current_level = 1
 var time_for_next_level = 60
 var max_level = 5
 var level_loops = 0
+
+var boatcap = 3
 
 func _ready():
 	pass

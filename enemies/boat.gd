@@ -1,12 +1,57 @@
 extends CharacterBody2D
 
-var bomb1LowerCap = 4
+signal bossleave
+
+var bomb1LowerCap = 5
 var bomb2LowerCap = 3
 var bomb3LowerCap = 2
 
+var total_distance = 0.0
+var previous_position = position
 
-func _ready():
+
+@export var BombScene: PackedScene
+@export var enterspeed = 200
+@export var leavespeed = 100
+@export var positiononscreen = 180
+
+@export var boat1leavetime = 25
+@export var boat2leavetime = 36
+@export var boat3leavetime = 40
+
+
+func _ready(boatlevel: int = 1):
+	match boatlevel:
+		1:
+			$BombLauncherTimer.wait_time = randi_range(bomb1LowerCap,7)
+			$LeaveTimer.wait_time = boat1leavetime
+			enterspeed = -160
+			leavespeed = 225
+		2:
+			$BombLauncherTimer.wait_time = randi_range(bomb2LowerCap,5)
+			$LeaveTimer.wait_time = boat2leavetime
+			enterspeed = -180
+			leavespeed = 235
+		3:
+			$BombLauncherTimer.wait_time = randi_range(bomb3LowerCap,3)
+			$LeaveTimer.wait_time = boat3leavetime
+			enterspeed = -200
+			leavespeed = 245
+
+	velocity.x = enterspeed
 	boatWater()
+
+func _process(delta: float) -> void:
+	var movement = position - previous_position
+	total_distance += movement.length()
+	previous_position = position
+
+	if total_distance >= positiononscreen && $LeaveTimer.is_stopped():
+		velocity.x = 0
+		$LeaveTimer.start()
+
+	position += velocity * delta
+	print($LeaveTimer.time_left)
 
 
 
@@ -24,4 +69,16 @@ func boatWater():
 
 
 func _on_bomb_launcher_timer_timeout() -> void:
-	pass # Replace with function body.
+	var mob = BombScene.instantiate()
+	var mobSpawnLocation = $BombSpawn
+	mob.position = mobSpawnLocation.position
+	add_child(mob)
+
+
+func _on_leave_timer_timeout() -> void:
+	velocity.x = leavespeed
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	bossleave.emit()
+	queue_free()

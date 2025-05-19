@@ -76,6 +76,9 @@ stream = ExtResource("6_hrd1a")
 autoplay = true
 parameters/looping = true
 
+[node name="BoatSpawn" type="Marker2D" parent="."]
+position = Vector2(651, 336)
+
 [connection signal="NewgameSigal" from="Menu" to="." method="_on_menu_newgame_sigal"]
 [connection signal="NewgameSigal" from="Menu" to="Menu/HUD" method="_on_menu_newgame_sigal"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
