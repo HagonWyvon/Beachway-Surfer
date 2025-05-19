@@ -12,7 +12,7 @@ var holding = false
 
 @export var maxhunger = 150
 @export var hunger = 100
-@export var hungerrate = 2.5
+@export var hungerrate = 6.5
 
 var burst = 0
 @export var burstactivate = 3
@@ -31,6 +31,7 @@ func deadShark():
 	dead.emit()
 	$DeathSfx.play()
 	death = true
+	$Mask/Shark.dead()
 
 func start(pos):
 	starthunger = true

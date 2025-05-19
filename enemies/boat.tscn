@@ -1,0 +1,133 @@
+[gd_scene load_steps=20 format=3 uid="uid://bm80qcehbe7sr"]
+
+[ext_resource type="Texture2D" uid="uid://mv2450idvhxr" path="res://assets/boat/boat.png" id="1_5p7of"]
+[ext_resource type="Script" uid="uid://bssgtf5nkxxhj" path="res://enemies/boat.gd" id="1_8avkp"]
+[ext_resource type="Texture2D" uid="uid://deuckh6d4l6js" path="res://assets/OG/cooking water/watersplash.png" id="2_18pcm"]
+[ext_resource type="Texture2D" uid="uid://ustkn6tnygcq" path="res://assets/boat/sailboat.png" id="2_gk0ld"]
+[ext_resource type="Texture2D" uid="uid://tghhta8cfky8" path="res://assets/boat/sailship.png" id="3_8avkp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbpvf"]
+atlas = ExtResource("2_18pcm")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68g1w"]
+atlas = ExtResource("2_18pcm")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1060"]
+atlas = ExtResource("2_18pcm")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uju0u"]
+atlas = ExtResource("2_18pcm")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckf88"]
+atlas = ExtResource("2_18pcm")
+region = Rect2(64, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciyjg"]
+atlas = ExtResource("2_18pcm")
+region = Rect2(128, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xi0n"]
+atlas = ExtResource("2_18pcm")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hioli"]
+atlas = ExtResource("2_18pcm")
+region = Rect2(64, 128, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ebfbv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbpvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68g1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1060")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uju0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckf88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciyjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xi0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hioli")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18pcm"]
+atlas = ExtResource("1_5p7of")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebfbv"]
+atlas = ExtResource("2_gk0ld")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7poh"]
+atlas = ExtResource("3_8avkp")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aw51i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18pcm")
+}],
+"loop": true,
+"name": &"boat1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebfbv")
+}],
+"loop": true,
+"name": &"boat2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7poh")
+}],
+"loop": true,
+"name": &"boat3",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8avkp"]
+size = Vector2(48, 24)
+
+[node name="Boat" type="CharacterBody2D"]
+script = ExtResource("1_8avkp")
+metadata/_edit_group_ = true
+
+[node name="Water" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_ebfbv")
+autoplay = "default"
+frame_progress = 0.6657
+
+[node name="BoatSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aw51i")
+animation = &"boat1"
+
+[node name="BombLauncherTimer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_8avkp")

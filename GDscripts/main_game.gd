@@ -2,6 +2,7 @@ extends Node
 
 @export var birdfoodreward = 10
 
+@export var BoatScene: PackedScene
 @export var BirdScene: PackedScene
 @export var base_speed: float = 1.0
 @export var difficulty_curve: float = 0.15
