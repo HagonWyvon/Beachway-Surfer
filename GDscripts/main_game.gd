@@ -101,9 +101,21 @@ func newGame():
 	$Player.start($PlayerSpawn.position)
 	$Timer/StartTimer.start()
 	
+	Currency.load()
+	Currency.coins = 0
+	
 func gameOver():
 	$Timer/ScoreTimer.stop()
 	$Timer/MobSpawnTimer.stop()
+	
+	var earned = score
+	Currency.coins += earned
+	Currency.total_coins += earned
+	Currency.save()
+	
+	print("Xu nhận:", earned)
+	print("Tài khoản:", Currency.total_coins, " xu")
+
 
 func _on_mob_spawn_timer_timeout() -> void:
 	var mob = BirdScene.instantiate()

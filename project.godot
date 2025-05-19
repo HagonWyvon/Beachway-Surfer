@@ -20,6 +20,7 @@ config/icon="uid://pcyb2866jt86"
 [autoload]
 
 Database="*res://GDscripts/database.gd"
+Currency="*res://GDscripts/currency.gd"
 
 [display]
 
