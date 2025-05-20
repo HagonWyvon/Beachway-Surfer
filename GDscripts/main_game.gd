@@ -80,7 +80,7 @@ func newGame():
 	bossfight = false
 	$Menu/Score.show()
 	current_level = 1
-	time_for_next_level = 5
+	time_for_next_level = 30
 	current_score_increment = base_score_increment
 	current_bite_reward = base_bite_reward
 	$Player.start($PlayerSpawn.position)
