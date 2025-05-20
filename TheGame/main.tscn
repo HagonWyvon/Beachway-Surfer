@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bo6bkuh2emu7i" path="res://TheGame/parallax_background.tscn" id="1_gfqty"]
 [ext_resource type="Script" uid="uid://bl5cir2b8xjtf" path="res://GDscripts/main_game.gd" id="1_lweib"]
 [ext_resource type="PackedScene" uid="uid://bljy3a28ikt40" path="res://enemies/birdEnemy.tscn" id="2_1j64x"]
+[ext_resource type="PackedScene" uid="uid://bm80qcehbe7sr" path="res://enemies/boat.tscn" id="2_vy185"]
 [ext_resource type="PackedScene" uid="uid://crlfq6s8l7fvl" path="res://UI/Menu.tscn" id="3_hrd1a"]
 [ext_resource type="PackedScene" uid="uid://6mg5vlmwgvpr" path="res://UI/HUD.tscn" id="4_7l6lc"]
 [ext_resource type="PackedScene" uid="uid://d3446qnhg3cxc" path="res://player/player.tscn" id="5_2r60g"]
@@ -17,6 +18,7 @@ point_count = 2
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lweib")
+BoatScene = ExtResource("2_vy185")
 BirdScene = ExtResource("2_1j64x")
 
 [node name="Menu" parent="." instance=ExtResource("3_hrd1a")]
@@ -62,6 +64,9 @@ position = Vector2(-50, 336)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(120, 336)
+
+[node name="BoatSpawn" type="Marker2D" parent="."]
+position = Vector2(662, 328)
 
 [node name="Timer" type="Node" parent="."]
 
