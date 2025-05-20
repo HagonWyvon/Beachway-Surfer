@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://dokr36y5a85dl"]
+
+[ext_resource type="Texture2D" uid="uid://6tde23lkguq2" path="res://assets/Texture_Source/GUI.png" id="1_7ktlp"]
+[ext_resource type="PackedScene" uid="uid://bd8imhci6wyom" path="res://UI/BUTTON.tscn" id="1_krujd"]
+[ext_resource type="Script" uid="uid://tgtfbrqkmdax" path="res://GDscripts/replayUI.gd" id="2_wjboa"]
+[ext_resource type="Theme" uid="uid://bl03w1htwslkp" path="res://assets/button/custom_button.tres" id="3_d2nhn"]
+
+[node name="NinePatchRect" type="NinePatchRect"]
+custom_minimum_size = Vector2(250, 150)
+anchors_preset = -1
+anchor_left = 0.298387
+anchor_top = 0.291667
+anchor_right = 0.701613
+anchor_bottom = 0.708333
+offset_left = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7ktlp")
+region_rect = Rect2(0, 96, 48, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 5
+script = ExtResource("2_wjboa")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16129
+anchor_top = 0.184896
+anchor_right = 0.83871
+anchor_bottom = 0.815104
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Dead noti" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "YOU DIED "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="REPLAY" parent="VBoxContainer" instance=ExtResource("1_krujd")]
+layout_mode = 2
+theme = ExtResource("3_d2nhn")
+text = "REPLAY"
+
+[node name="BACK TO MENU" parent="VBoxContainer" instance=ExtResource("1_krujd")]
+layout_mode = 2
+theme = ExtResource("3_d2nhn")
+text = "BACK TO MENU"
+
+[connection signal="pressed" from="VBoxContainer/REPLAY" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="VBoxContainer/BACK TO MENU" to="." method="_on_back_to_menu_pressed"]

@@ -53,3 +53,9 @@ func _ready() -> void:
 	#$blueskyBackground/bluesky/Sprite2D.scale.y = 1.5
 	#print($blueskyBackground/bluesky/Sprite2D.scale.y)
 	changeBackground(backgroundNum)
+func bgtrans_on_score(_point):
+	match _point: #có thể có _point nếu m muốn
+		"1":
+			$"transition screen".PlayBGTrans()
+			$"parallaxBackground".changeBackground(1) 
+	

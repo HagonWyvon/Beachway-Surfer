@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://dnxwq2fkanje6"]
 
-[ext_resource type="Texture2D" uid="uid://isn6i27csxt5" path="res://assets/shark/Walk.png" id="1_2w7hj"]
+[ext_resource type="Texture2D" uid="uid://isn6i27csxt5" path="res://assets/Shark/Walk.png" id="1_2w7hj"]
 [ext_resource type="Script" uid="uid://cnrnj3o8pkn2i" path="res://GDscripts/shark.gd" id="1_6lysk"]
 [ext_resource type="Texture2D" uid="uid://deit3imi4sxsb" path="res://assets/shark/Idle.png" id="2_cy6ve"]
 [ext_resource type="AudioStream" uid="uid://hc3aakd4vmx4" path="res://sfx/JumpSFX/Short_Jump.wav" id="3_0mbdm"]
@@ -115,10 +115,12 @@ shape = SubResource("CapsuleShape2D_snknl")
 
 [node name="HighJumpsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_8yx6c")
-volume_db = -20.0
+volume_db = -60.0
 mix_target = 1
+bus = &"SFX"
 
 [node name="LowJumpsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_0mbdm")
-volume_db = -20.0
+volume_db = -60.0
 mix_target = 1
+bus = &"SFX"

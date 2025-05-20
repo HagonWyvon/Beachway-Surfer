@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxxnu68ced8x8"]
+
+[ext_resource type="Script" uid="uid://yy4jd5dqr8d7" path="res://GDscripts/h_slider.gd" id="1_m7d8r"]
+
+[node name="HSlider" type="HSlider"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 20.0
+value = 10.0
+script = ExtResource("1_m7d8r")
