@@ -1,11 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://bm80qcehbe7sr"]
+[gd_scene load_steps=22 format=3 uid="uid://bm80qcehbe7sr"]
 
 [ext_resource type="Texture2D" uid="uid://mv2450idvhxr" path="res://assets/boat/boat.png" id="1_5p7of"]
-[ext_resource type="Script" uid="uid://bssgtf5nkxxhj" path="res://enemies/boat.gd" id="1_8avkp"]
+[ext_resource type="Script" uid="uid://bssgtf5nkxxhj" path="res://GDscripts/boat.gd" id="1_8avkp"]
 [ext_resource type="Texture2D" uid="uid://deuckh6d4l6js" path="res://assets/OG/cooking water/watersplash.png" id="2_18pcm"]
 [ext_resource type="PackedScene" uid="uid://tvcqjn7gqjbc" path="res://enemies/bomb.tscn" id="2_ebfbv"]
 [ext_resource type="Texture2D" uid="uid://ustkn6tnygcq" path="res://assets/boat/sailboat.png" id="2_gk0ld"]
 [ext_resource type="Texture2D" uid="uid://tghhta8cfky8" path="res://assets/boat/sailship.png" id="3_8avkp"]
+[ext_resource type="AudioStream" uid="uid://3cp8p0xpvbmp" path="res://sfx/BoatSFX/dark-souls-iii-boss-music-made-with-Voicemod.wav" id="7_ebfbv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbpvf"]
 atlas = ExtResource("2_18pcm")
@@ -114,7 +115,6 @@ animations = [{
 size = Vector2(48, 24)
 
 [node name="Boat" type="CharacterBody2D"]
-position = Vector2(285, 162)
 script = ExtResource("1_8avkp")
 BombScene = ExtResource("2_ebfbv")
 metadata/_edit_group_ = true
@@ -135,6 +135,10 @@ autostart = true
 [node name="LeaveTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="EnterTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
 [node name="BombSpawn" type="Marker2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -142,6 +146,10 @@ visible = false
 shape = SubResource("RectangleShape2D_8avkp")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ebfbv")
+volume_db = -10.0
 
 [connection signal="timeout" from="BombLauncherTimer" to="." method="_on_bomb_launcher_timer_timeout"]
 [connection signal="timeout" from="LeaveTimer" to="." method="_on_leave_timer_timeout"]

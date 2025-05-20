@@ -1,112 +1,94 @@
 extends Node
 
 @export var birdfoodreward = 24
-
 @export var BoatScene: PackedScene
 @export var BirdScene: PackedScene
-@export var base_speed: float = 1.0
-@export var difficulty_curve: float = 0.15
 @export var base_score_increment = 1
 @export var base_bite_reward = 10
 
-var score = 0
-var current_scale: float = 1.0
+var bossfight: bool = false
+var time_score = 0
+var bite_score = 0
+var bonus_score = 0
+var total_score = 0
 var current_score_increment = 1
 var current_bite_reward = 10
-var game_time = 0
 var current_level = 1
-var time_for_next_level = 60
+var time_for_next_level = 5
 var max_level = 5
 var level_loops = 0
 
 var boatcap = 3
 
 func _ready():
-	pass
-	#newGame()
+	print("Game initialized")
+	# newGame()  # Uncomment to start game automatically
 
 func _on_bird_shark_bitten():
-	score += current_bite_reward
-	update_scaling()
-	$Player.eat(birdfoodreward)
+	if bossfight:
+		bite_score += current_bite_reward * 2
+		$Player.eat(birdfoodreward * 2)
+		print("Bird bitten during bossfight: bite_score +=", current_bite_reward * 2)
+	else:
+		bite_score += current_bite_reward
+		$Player.eat(birdfoodreward)
+		print("Bird bitten: bite_score +=", current_bite_reward)
 
 func update_level():
-	var previous_level = current_level
-	
-	if game_time >= time_for_next_level:
+	print("Checking level update: time_score=", time_score, " time_for_next_level=", time_for_next_level, " bossfight=", bossfight)
+	if time_score >= time_for_next_level:
+		print("Level advancing to ", current_level + 1)
+		bossfight = true
 		current_level += 1
 		changeLevel()
-		
-		
 		if current_level > max_level:
 			current_level = 1
 			level_loops += 1
-		
-		
-		time_for_next_level += 30 * (current_level + (level_loops * max_level))
-		
-		
-		var level_factor = current_level * 0.2
-		
-		
-		var loop_factor = level_loops * 0.5
-		
-		
-		current_scale = base_speed * (1 + level_factor + loop_factor)
-		
-		
-		current_score_increment = ceil(base_score_increment * (1 + (current_level * 0.3) + (level_loops * 0.5)))
-		current_bite_reward = ceil(base_bite_reward * (1 + (current_level * 0.5) + (level_loops * 0.7)))
-		
-
-
-func update_scaling():
-	pass
-	#if score >= initial_scale_threshold:
-		#@warning_ignore("integer_division")
-		#current_scale = base_speed * (1 + difficulty_curve * log(score / initial_scale_threshold))
-		#
-		#current_score_increment = ceil(base_score_increment * current_scale)
-		#current_bite_reward = ceil(base_bite_reward * current_scale)
-		#
-		#if score >= scale_threshold:
-			#scale_threshold += threshold_increment
-			#current_scale += 0.05
-			#threshold_increment = max(50, threshold_increment * 0.95)
-	## Additional scaling based on score (optional - can work alongside level system)
-	#if score >= 100:
-		## Small additional boost based on score
-		#var score_boost = difficulty_curve * log(score / 100)
-		#current_scale += score_boost * 0.1  # Smaller impact than level changes
+		time_for_next_level += 10 * (current_level + (level_loops * max_level))
+		print("New time_for_next_level: ", time_for_next_level)
 
 func deepDive():
 	pass
 
 func changeLevel():
-	pass
+	var boat = BoatScene.instantiate()
+	var boatSpawnLocation = $BoatSpawn
+	boat.position = boatSpawnLocation.position
+	boat.player = $Player
+	boat.bossleave.connect(_on_bossleave)
+	add_child(boat)
+	print("Boss spawned at level ", current_level)
+
+func _on_bossleave():
+	print("Boss left, ending bossfight")
+	bossfight = false
+	bonus_score += (current_level * 10) * (level_loops + 1)
+	print("Bonus score added: ", bonus_score)
 
 func _process(_delta: float) -> void:
-	
-	$Menu/Score.text = str(score)
-	
-	# Update time display
-	var minutes = floor(game_time / 60)
-	var seconds = int(game_time) % 60
+	$Menu/Score.text = str(bite_score + time_score + bonus_score)
+	# print("score: ", time_score)  # Commented out to reduce clutter
 
 func newGame():
-	score = 0;$Menu/Score.show()
-	current_scale = 1.0
-	game_time = 0
+	print("Starting new game")
+	total_score = 0
+	bite_score = 0
+	time_score = 0
+	bonus_score = 0
+	bossfight = false
+	$Menu/Score.show()
 	current_level = 1
-	time_for_next_level = 60
+	time_for_next_level = 5
 	current_score_increment = base_score_increment
 	current_bite_reward = base_bite_reward
 	$Player.start($PlayerSpawn.position)
 	$Timer/StartTimer.start()
-	
+	print("ScoreTimer wait_time: ", $Timer/ScoreTimer.wait_time)
+
 func gameOver():
 	$Timer/ScoreTimer.stop()
 	$Timer/MobSpawnTimer.stop()
+	print("Game over")
 
 func _on_mob_spawn_timer_timeout() -> void:
 	var mob = BirdScene.instantiate()
@@ -114,23 +96,22 @@ func _on_mob_spawn_timer_timeout() -> void:
 	mobSpawnLocation.progress_ratio = randf()
 	mob.position = mobSpawnLocation.position
 	mob.bitten.connect(_on_bird_shark_bitten)
-	mob.speedincrease(current_scale) 
 	add_child(mob)
+	print("Bird spawned")
 
 func _on_score_timer_timeout() -> void:
-	game_time += 1
-	score += current_score_increment
+	if !bossfight:
+		time_score += current_score_increment
+		print("Time score incremented: ", time_score, " | Next level at: ", time_for_next_level, " | Bossfight: ", bossfight)
 	update_level()
-	update_scaling()
 
 func _on_start_timer_timeout() -> void:
 	$Timer/MobSpawnTimer.start()
 	$Timer/ScoreTimer.start()
-
+	print("Timers started")
 
 func _on_menu_newgame_sigal() -> void:
 	newGame()
-
 
 func _on_player_dead() -> void:
 	gameOver()
