@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal water
+signal oof
 
 var airborne = false
 var notdead = true
@@ -8,6 +9,13 @@ var notdead = true
 @export var jumprotation = 25
 @export var deacceleration = 215.0
 @export var height = -1
+
+func _ready() -> void:
+	add_to_group("player")
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bomb"):
+		oof.emit()
 
 func dead():
 	velocity.y = -250

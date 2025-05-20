@@ -56,6 +56,7 @@ func changeLevel():
 	var boatSpawnLocation = $BoatSpawn
 	boat.position = boatSpawnLocation.position
 	boat.player = $Player
+	boat.boatlevel = current_level if current_level < 3 else 3
 	boat.bossleave.connect(_on_bossleave)
 	add_child(boat)
 	print("Boss spawned at level ", current_level)
@@ -104,7 +105,7 @@ func _on_score_timer_timeout() -> void:
 	if !bossfight:
 		time_score += current_score_increment
 		print("Time score incremented: ", time_score, " | Next level at: ", time_for_next_level, " | Bossfight: ", bossfight)
-	update_level()
+		update_level()
 
 func _on_start_timer_timeout() -> void:
 	$Timer/MobSpawnTimer.start()

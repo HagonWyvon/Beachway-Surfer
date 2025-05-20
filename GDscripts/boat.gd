@@ -6,6 +6,8 @@ var bomb1LowerCap = 5
 var bomb2LowerCap = 3
 var bomb3LowerCap = 2
 var boatlevel = 1
+var bombburst = 1
+var bonusbomb = 2
 var player: Node2D
 
 @export var BombScene: PackedScene
@@ -37,9 +39,7 @@ func _ready():
 	boatWater()
 
 func _process(delta: float) -> void:
-	if $LeaveTimer.is_stopped() && $EnterTimer.is_stopped():
-		velocity.x = 0
-		$LeaveTimer.start()
+	print("BossTime", $LeaveTimer.time_left)
 	position += velocity * delta
 
 func boatWater():
@@ -55,14 +55,21 @@ func boatWater():
 			$Water.offset.y = 9
 
 func _on_bomb_launcher_timer_timeout() -> void:
-	var mob = BombScene.instantiate()
-	mob.global_position = $BombSpawn.global_position
-	if player:
-		mob.launch_to_player(player.global_position)
-		print("Bomb launched toward player at ", player.global_position)
-	else:
-		print("No player found for bomb launch")
-	get_tree().current_scene.add_child(mob)  # Add to root node
+	bombburst = boatlevel + bonusbomb
+	while bombburst:
+		bombburst -= 1
+		var mob = BombScene.instantiate()
+		mob.global_position = $BombSpawn.global_position
+		if player:
+			if player.rotation_degrees != 0:
+				mob.launch_to_player(player.global_position, randf_range(85,175))
+			else:
+				mob.launch_to_player(player.global_position)
+			print("Bomb launched toward player at ", player.global_position)
+		else:
+			print("No player found for bomb launch")
+		get_tree().current_scene.add_child(mob)  # Add to root node
+		await get_tree().create_timer(0.1).timeout
 
 func _on_leave_timer_timeout() -> void:
 	velocity.x = leavespeed
@@ -70,3 +77,8 @@ func _on_leave_timer_timeout() -> void:
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	bossleave.emit()
 	queue_free()
+
+
+func _on_enter_timer_timeout() -> void:
+	velocity.x = 0
+	$LeaveTimer.start()

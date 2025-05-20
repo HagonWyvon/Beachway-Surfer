@@ -1000,4 +1000,5 @@ volume_db = -60.0
 bus = &"SFX"
 
 [connection signal="timeout" from="Timer/JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="oof" from="Mask/Shark" to="." method="_on_shark_oof"]
 [connection signal="water" from="Mask/Shark" to="." method="_on_shark_water"]

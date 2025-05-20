@@ -7,6 +7,7 @@ var starthunger = false
 
 var jumpable = false
 var holding = false
+var submerged = false
 @export var highjumpheight = 350
 @export var midjump = 30
 @export var lowjumpheight = 200
@@ -86,9 +87,13 @@ func _on_jump_timer_timeout() -> void:
 func _on_shark_water() -> void:
 	jumpable = true
 
-func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("bomb") and !death:
-		hunger -= 20		# Reduce hunger on bomb hit
+
+func _on_shark_oof() -> void:
+	if !death && !holding:
+		if submerged:
+			hunger -= 10
+		else:
+			hunger -= 20		# Reduce hunger on bomb hit
 		print("Player hit by bomb, hunger=", hunger)
 		if hunger <= 0:
 			deadShark()

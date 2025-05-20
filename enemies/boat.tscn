@@ -149,8 +149,9 @@ shape = SubResource("RectangleShape2D_8avkp")
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ebfbv")
-volume_db = -10.0
+volume_db = -35.0
 
 [connection signal="timeout" from="BombLauncherTimer" to="." method="_on_bomb_launcher_timer_timeout"]
 [connection signal="timeout" from="LeaveTimer" to="." method="_on_leave_timer_timeout"]
+[connection signal="timeout" from="EnterTimer" to="." method="_on_enter_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

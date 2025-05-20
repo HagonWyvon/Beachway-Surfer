@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccr5vwrk4f72p"]
+[gd_scene load_steps=11 format=3 uid="uid://ccr5vwrk4f72p"]
 
 [ext_resource type="PackedScene" uid="uid://bo6bkuh2emu7i" path="res://TheGame/parallax_background.tscn" id="1_gfqty"]
 [ext_resource type="Script" uid="uid://bl5cir2b8xjtf" path="res://GDscripts/main_game.gd" id="1_lweib"]
