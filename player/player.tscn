@@ -975,7 +975,6 @@ offset = Vector2(0, -182)
 
 [node name="Shark" parent="Mask" instance=ExtResource("7_boad6")]
 texture_filter = 1
-height = -100
 
 [node name="BoosterFever" type="AnimatedSprite2D" parent="."]
 visible = false

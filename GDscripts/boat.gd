@@ -6,7 +6,7 @@ var bomb1LowerCap = 5
 var bomb2LowerCap = 3
 var bomb3LowerCap = 2
 var boatlevel = 1
-var player: Node2D  # Store player node
+var player: Node2D
 
 @export var BombScene: PackedScene
 @export var enterspeed = 200
@@ -56,14 +56,13 @@ func boatWater():
 
 func _on_bomb_launcher_timer_timeout() -> void:
 	var mob = BombScene.instantiate()
-	var mobSpawnLocation = $BombSpawn
-	mob.global_position = mobSpawnLocation.global_position
+	mob.global_position = $BombSpawn.global_position
 	if player:
 		mob.launch_to_player(player.global_position)
 		print("Bomb launched toward player at ", player.global_position)
 	else:
 		print("No player found for bomb launch")
-	add_child(mob)
+	get_tree().current_scene.add_child(mob)  # Add to root node
 
 func _on_leave_timer_timeout() -> void:
 	velocity.x = leavespeed
