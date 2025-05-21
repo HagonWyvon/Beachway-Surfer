@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3 uid="uid://d3446qnhg3cxc"]
+[gd_scene load_steps=145 format=3 uid="uid://d3446qnhg3cxc"]
 
 [ext_resource type="Script" uid="uid://cwni6wiqkv24j" path="res://GDscripts/player.gd" id="1_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://deuckh6d4l6js" path="res://assets/OG/cooking water/watersplash.png" id="2_8t03j"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://yfoclrycbe07" path="res://assets/jump/Water StartUp 1 SpriteSheet(30fps).png" id="8_ebec5"]
 [ext_resource type="AudioStream" uid="uid://0xdn1fucsbok" path="res://sfx/Hagons_SFX/powerUp.wav" id="9_hg6s5"]
 [ext_resource type="AudioStream" uid="uid://baekc3aj4h6f5" path="res://sfx/DeathSFX/Taco-Bell-Bong-Sound-Effect-HD.wav" id="11_2ieo8"]
+[ext_resource type="Texture2D" uid="uid://6tde23lkguq2" path="res://assets/Texture_Source/GUI.png" id="12_ebec5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbpvf"]
 atlas = ExtResource("2_8t03j")
@@ -944,6 +945,14 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5mnx"]
+atlas = ExtResource("12_ebec5")
+region = Rect2(135, 20, 52, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt0ky"]
+atlas = ExtResource("12_ebec5")
+region = Rect2(71, 20, 51, 7)
+
 [node name="Player" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_qjkh3")
@@ -998,6 +1007,16 @@ bus = &"SFX"
 stream = ExtResource("11_2ieo8")
 volume_db = -60.0
 bus = &"SFX"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -48.0
+offset_top = -8.0
+offset_right = 4.0
+offset_bottom = -1.0
+rotation = -1.5708
+value = 36.0
+texture_under = SubResource("AtlasTexture_e5mnx")
+texture_progress = SubResource("AtlasTexture_dt0ky")
 
 [connection signal="timeout" from="Timer/JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="oof" from="Mask/Shark" to="." method="_on_shark_oof"]

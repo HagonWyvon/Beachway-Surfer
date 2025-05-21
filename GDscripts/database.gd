@@ -2,9 +2,11 @@ extends Node
 
 signal ItemClick
 signal HungerPt
+signal BurstPt
 signal playerDeath
 signal replay
 signal backtomenuOndeath
+signal bombprogress
 
 var ListItem = {
 	"ITEM1":{

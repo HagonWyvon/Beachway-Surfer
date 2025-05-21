@@ -18,7 +18,7 @@ var submerged = false
 @export var hunger = 100
 @export var hungerrate = 8.5
 
-var burst = 0
+var burst = 15
 @export var burstactivate = 3
 @export var burstreward = 1
 
@@ -26,7 +26,9 @@ func _ready():
 	$BoosterFever.hide()
 	$Jump.hide()
 	add_to_group("player")		# For bomb collision detection
-
+	
+	$TextureProgressBar.visible = false
+	$TextureProgressBar.value = 0
 func bursting():
 	pass
 
@@ -35,6 +37,7 @@ func eat(food):
 	if hunger > maxhunger:
 		hunger = maxhunger
 		burst += burstreward
+	Database.BurstPt.emit(burst)
 
 func deadShark():
 	deademit.emit()
@@ -61,6 +64,7 @@ func _process(delta):
 		submerged = true
 	if Input.is_action_just_pressed("jump") && jumpable && !death:
 		holding = true
+		$TextureProgressBar.visible = true
 		$WaterSpread.hide()
 		$Jump.offset.y = 0
 		$Jump.animation = "start_up1"
@@ -71,6 +75,7 @@ func _process(delta):
 	if Input.is_action_just_released("jump") && holding && !death:
 		$Jump.offset.y = -36
 		jumpable = false
+		$TextureProgressBar.visible = false
 		$WaterSpread.hide()
 		if !$Timer/JumpTimer.is_stopped():
 			$Jump.animation = "lowjump"
@@ -83,7 +88,9 @@ func _process(delta):
 		$Jump.play()
 		holding = false
 		submerged = false
-
+	if holding:
+		var holdingprogress = (1 - $Timer/JumpTimer.time_left)*100
+		$TextureProgressBar.value = holdingprogress
 func _on_jump_timer_timeout() -> void:
 	$Jump.animation = "start_up2"
 	$Jump.play()
@@ -91,7 +98,6 @@ func _on_jump_timer_timeout() -> void:
 
 func _on_shark_water() -> void:
 	jumpable = true
-
 
 func _on_shark_oof() -> void:
 	if !death && !holding:

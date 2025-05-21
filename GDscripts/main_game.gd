@@ -7,6 +7,7 @@ extends Node
 @export var base_bite_reward = 10
 
 var bossfight: bool = false
+var burst_score = 15
 var time_score = 0
 var bite_score = 0
 var bonus_score = 0
@@ -30,7 +31,7 @@ func _ready():
 	# newGame()  # Uncomment to start game automatically
 
 func _on_bird_shark_bitten():
-	if bossfight:
+	if bossfight or _on_bar_burst_mode():
 		bite_score += current_bite_reward * 2
 		$Player.eat(birdfoodreward * 2)
 		print("Bird bitten during bossfight: bite_score +=", current_bite_reward * 2)
@@ -38,7 +39,7 @@ func _on_bird_shark_bitten():
 		bite_score += current_bite_reward
 		$Player.eat(birdfoodreward)
 		print("Bird bitten: bite_score +=", current_bite_reward)
-
+	
 func update_level():
 	print("Checking level update: time_score=", time_score, " time_for_next_level=", time_for_next_level, " bossfight=", bossfight)
 	if time_score >= time_for_next_level:
@@ -108,12 +109,17 @@ func restart_game():
 	time_for_next_level = 25
 	current_score_increment = base_score_increment
 	current_bite_reward = base_bite_reward
+	
+	#Reset hunger bar
+	$Player.hunger = 100
+	Database.HungerPt.emit($Player.hunger)
+	
 	# Reset player
 	$Player.start($PlayerSpawn.position)
 	$Player.hunger = $Player.maxhunger
 	$Player.death = false
 	$Player.jumpable = true
-	$Player.starthunger = false
+	$Player.starthunger = true
 	$Player.submerged = false
 	if $Player.has_node("Mask/Shark"):
 		var shark = $Player.get_node("Mask/Shark")
@@ -192,3 +198,7 @@ func _on_replay_pressed() -> void:
 
 func _on_player_dead() -> void:
 	gameOver()
+
+
+func _on_bar_burst_mode() -> bool:
+	return true

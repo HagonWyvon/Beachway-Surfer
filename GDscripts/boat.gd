@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal bossleave
 
+
 var bomb1LowerCap = 5
 var bomb2LowerCap = 3
 var bomb3LowerCap = 2
@@ -19,6 +20,7 @@ var player: Node2D
 
 func _ready():
 	$BossMusic.play()
+	$TextureProgressBar.visible = false
 	match boatlevel:
 		1:
 			print("Boatlevel: ", boatlevel)
@@ -48,7 +50,13 @@ func _process(delta: float) -> void:
 	
 	print("BossTime", $LeaveTimer.time_left)
 	position += velocity * delta
-
+	if (1-$BombLauncherTimer.time_left):
+		$TextureProgressBar.visible = true
+		var bombprogress = (1 - $BombLauncherTimer.time_left)*100
+		$TextureProgressBar.value = bombprogress
+	else:
+		$TextureProgressBar.visible = false
+		
 func boatWater():
 	match $BoatSprite.animation:
 		"boat1":
@@ -63,6 +71,7 @@ func boatWater():
 
 func _on_bomb_launcher_timer_timeout() -> void:
 	bombburst = boatlevel + bonusbomb
+	
 	while bombburst:
 		bombburst -= 1
 		var mob = BombScene.instantiate()
