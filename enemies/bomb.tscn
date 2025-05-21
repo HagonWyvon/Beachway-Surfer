@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://tvcqjn7gqjbc"]
+[gd_scene load_steps=25 format=3 uid="uid://tvcqjn7gqjbc"]
 
 [ext_resource type="Script" uid="uid://doaod0i42t0h2" path="res://GDscripts/bomb.gd" id="1_nd6tj"]
 [ext_resource type="Texture2D" uid="uid://bbj88qftlmubf" path="res://assets/MiscObjects/1-BOMB/3-Explotion/1.png" id="2_6lx2g"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://btvnnvol2t16i" path="res://assets/MiscObjects/1-BOMB/2-Bomb On/8.png" id="19_0vsst"]
 [ext_resource type="Texture2D" uid="uid://ceefiq0kjxgx3" path="res://assets/MiscObjects/1-BOMB/2-Bomb On/9.png" id="20_e7eou"]
 [ext_resource type="Texture2D" uid="uid://cqi71vbv2n74a" path="res://assets/MiscObjects/1-BOMB/2-Bomb On/10.png" id="21_35ke2"]
+[ext_resource type="AudioStream" uid="uid://c1clx0bgagp52" path="res://sfx/BoatSFX/vine-boom.wav" id="22_6lx2g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wa3aj"]
 animations = [{
@@ -118,5 +119,9 @@ visible = false
 
 [node name="BombHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_owoql")
+
+[node name="Boom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_6lx2g")
+volume_db = -15.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

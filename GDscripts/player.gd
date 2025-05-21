@@ -9,12 +9,14 @@ var jumpable = false
 var holding = false
 var submerged = false
 @export var highjumpheight = 350
-@export var midjump = 30
+@export var midjump = 80
 @export var lowjumpheight = 200
+
+@export var hungerbomb = 25
 
 @export var maxhunger = 150
 @export var hunger = 100
-@export var hungerrate = 10.5
+@export var hungerrate = 8.5
 
 var burst = 0
 @export var burstactivate = 3
@@ -41,6 +43,7 @@ func deadShark():
 	$Mask/Shark.dead()
 
 func start(pos):
+	$Mask/Shark.new()
 	starthunger = true
 	jumpable = true
 	position = pos
@@ -55,6 +58,7 @@ func _process(delta):
 
 	if jumpable && !Input.is_action_pressed("jump") && $Mask/Shark.rotation_degrees == 0:
 		$WaterSpread.show()
+		submerged = true
 	if Input.is_action_just_pressed("jump") && jumpable && !death:
 		holding = true
 		$WaterSpread.hide()
@@ -78,6 +82,7 @@ func _process(delta):
 			$Mask/Shark.jump(-highjumpheight, "high")
 		$Jump.play()
 		holding = false
+		submerged = false
 
 func _on_jump_timer_timeout() -> void:
 	$Jump.animation = "start_up2"
@@ -91,9 +96,9 @@ func _on_shark_water() -> void:
 func _on_shark_oof() -> void:
 	if !death && !holding:
 		if submerged:
-			hunger -= 10
+			hunger -= hungerbomb/2
 		else:
-			hunger -= 20		# Reduce hunger on bomb hit
+			hunger -= hungerbomb		# Reduce hunger on bomb hit
 		print("Player hit by bomb, hunger=", hunger)
 		if hunger <= 0:
 			deadShark()

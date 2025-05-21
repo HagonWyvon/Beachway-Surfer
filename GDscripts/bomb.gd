@@ -21,6 +21,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func explode():
 	if !exploding:
 		print("Ambatoblow")
+		$Boom.play()
 		$BombAnim.animation = "boom"
 		$BombAnim.play()
 		exploding = true
