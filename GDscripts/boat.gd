@@ -71,6 +71,9 @@ func _on_bomb_launcher_timer_timeout() -> void:
 	$TextureProgressBar.visible = false
 	bombburst = boatlevel + bonusbomb
 	while bombburst:
+		var smoke_types = Array($Smoke.sprite_frames.get_animation_names())
+		$Smoke.animation = smoke_types.pick_random()
+		$Smoke.play()
 		bombburst -= 1
 		var mob = BombScene.instantiate()
 		mob.global_position = $BombSpawn.global_position
