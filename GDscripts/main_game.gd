@@ -152,6 +152,7 @@ func newGame():
 	bonus_score = 0
 	bossfight = false
 	$Menu/Score.show()
+	#$Menu/HUD.show()
 	current_level = 1
 	time_for_next_level = 25
 	current_score_increment = base_score_increment
@@ -198,7 +199,6 @@ func _on_replay_pressed() -> void:
 
 func _on_player_dead() -> void:
 	gameOver()
-
-
+	
 func _on_bar_burst_mode() -> bool:
 	return true

@@ -7,9 +7,8 @@ var SignalHungerrecive = Database.HungerPt
 var Signalburstptreceive = Database.BurstPt
 
 func _on_menu_newgame_sigal() -> void:
-	$".".show()
+	#print("okkkkkkkkkkkkkkkkkkkkkkkkkkk")
 	barsAnimation.play("show_bar")
-	#await barsAnimation.animation_finished
 
 func _ready() -> void:
 	SignalHungerrecive.connect(update_Bar)

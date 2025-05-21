@@ -48,14 +48,12 @@ func _ready():
 
 func _process(delta: float) -> void:
 	
-	print("BossTime", $LeaveTimer.time_left)
+	#print("BossTime", $LeaveTimer.time_left)
 	position += velocity * delta
-	if (1-$BombLauncherTimer.time_left):
+	if $BombLauncherTimer.time_left <= 1:
 		$TextureProgressBar.visible = true
 		var bombprogress = (1 - $BombLauncherTimer.time_left)*100
 		$TextureProgressBar.value = bombprogress
-	else:
-		$TextureProgressBar.visible = false
 		
 func boatWater():
 	match $BoatSprite.animation:
@@ -70,8 +68,8 @@ func boatWater():
 			$Water.offset.y = 9
 
 func _on_bomb_launcher_timer_timeout() -> void:
+	$TextureProgressBar.visible = false
 	bombburst = boatlevel + bonusbomb
-	
 	while bombburst:
 		bombburst -= 1
 		var mob = BombScene.instantiate()
