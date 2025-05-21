@@ -7,7 +7,7 @@ var bomb2LowerCap = 3
 var bomb3LowerCap = 2
 var boatlevel = 1
 var bombburst = 1
-var bonusbomb = 2
+var bonusbomb = 0
 var player: Node2D
 
 @export var BombScene: PackedScene
@@ -21,16 +21,22 @@ func _ready():
 	$BossMusic.play()
 	match boatlevel:
 		1:
+			print("Boatlevel: ", boatlevel)
+			$BoatSprite.animation = "boat1"
 			$BombLauncherTimer.wait_time = randi_range(bomb1LowerCap, 7)
 			$LeaveTimer.wait_time = boat1leavetime
 			enterspeed = -160
 			leavespeed = 225
 		2:
+			print("Boatlevel: ", boatlevel)
+			$BoatSprite.animation = "boat2"
 			$BombLauncherTimer.wait_time = randi_range(bomb2LowerCap, 5)
 			$LeaveTimer.wait_time = boat2leavetime
 			enterspeed = -180
 			leavespeed = 235
 		3:
+			print("Boatlevel: ", boatlevel)
+			$BoatSprite.animation = "boat3"
 			$BombLauncherTimer.wait_time = randi_range(bomb3LowerCap, 3)
 			$LeaveTimer.wait_time = boat3leavetime
 			enterspeed = -200
@@ -39,6 +45,7 @@ func _ready():
 	boatWater()
 
 func _process(delta: float) -> void:
+	
 	print("BossTime", $LeaveTimer.time_left)
 	position += velocity * delta
 
@@ -69,6 +76,7 @@ func _on_bomb_launcher_timer_timeout() -> void:
 		else:
 			print("No player found for bomb launch")
 		get_tree().current_scene.add_child(mob)  # Add to root node
+		$CannonSfx.play()
 		await get_tree().create_timer(0.1).timeout
 
 func _on_leave_timer_timeout() -> void:
@@ -82,3 +90,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func _on_enter_timer_timeout() -> void:
 	velocity.x = 0
 	$LeaveTimer.start()
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	pass # Replace with function body.

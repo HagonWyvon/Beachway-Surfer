@@ -130,3 +130,5 @@ bus = &"SFX"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_snknl")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

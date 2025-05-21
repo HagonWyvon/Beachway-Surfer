@@ -66,7 +66,7 @@ position = Vector2(-50, 336)
 position = Vector2(120, 336)
 
 [node name="BoatSpawn" type="Marker2D" parent="."]
-position = Vector2(662, 328)
+position = Vector2(679, 314)
 
 [node name="Timer" type="Node" parent="."]
 
@@ -76,6 +76,7 @@ one_shot = true
 [node name="ScoreTimer" type="Timer" parent="Timer"]
 
 [node name="MobSpawnTimer" type="Timer" parent="Timer"]
+wait_time = 2.5
 
 [node name="Audio" type="Node" parent="."]
 
