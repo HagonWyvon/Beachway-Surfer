@@ -9,8 +9,8 @@ signal NewgameSigal
 @onready var replay: Control = $REPLAY
 
 var resolutions = {
-	"3840x2160": Vector2i(3840,2160),
-	"2560x1440": Vector2i(2560,1440),
+	#"3840x2160": Vector2i(3840,2160),
+	#"2560x1440": Vector2i(2560,1440),
 	"1920x1080": Vector2i(1920,1080),
 	"1600x900": Vector2i(1600,900),
 	"1440x900": Vector2i(1440,900),

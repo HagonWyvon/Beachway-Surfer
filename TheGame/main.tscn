@@ -23,24 +23,32 @@ BirdScene = ExtResource("2_1j64x")
 
 [node name="Menu" parent="." instance=ExtResource("3_hrd1a")]
 z_index = 999
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
 
-[node name="BAR" parent="Menu" instance=ExtResource("4_7l6lc")]
-z_index = -999
-z_as_relative = false
+[node name="HUD" parent="Menu" instance=ExtResource("4_7l6lc")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.084
+anchor_left = -0.088
 anchor_top = -0.0466667
-anchor_right = -0.084
+anchor_right = -0.088
 anchor_bottom = -0.0466667
-scale = Vector2(1.5, 1.5)
 
 [node name="Score" type="Label" parent="Menu"]
-layout_mode = 0
-anchor_left = 1.002
-anchor_top = -0.0433333
-anchor_right = 1.108
-anchor_bottom = 0.0233333
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.016
+anchor_top = -0.0733333
+anchor_right = 1.122
+anchor_bottom = 0.02
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -88,7 +96,7 @@ bus = &"Music"
 parameters/looping = true
 
 [connection signal="NewgameSigal" from="Menu" to="." method="_on_menu_newgame_sigal"]
-[connection signal="NewgameSigal" from="Menu" to="Menu/BAR" method="_on_menu_newgame_sigal"]
+[connection signal="NewgameSigal" from="Menu" to="Menu/HUD" method="_on_menu_newgame_sigal"]
 [connection signal="timeout" from="Timer/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Timer/ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="Timer/MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

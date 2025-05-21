@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://bm80qcehbe7sr"]
+[gd_scene load_steps=26 format=3 uid="uid://bm80qcehbe7sr"]
 
 [ext_resource type="Texture2D" uid="uid://mv2450idvhxr" path="res://assets/boat/boat.png" id="1_5p7of"]
 [ext_resource type="Script" uid="uid://bssgtf5nkxxhj" path="res://GDscripts/boat.gd" id="1_8avkp"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cu4n5gqcg2lcn" path="res://assets/boat/Free Smoke Fx  Pixel 06.png" id="7_aw51i"]
 [ext_resource type="AudioStream" uid="uid://3cp8p0xpvbmp" path="res://sfx/BoatSFX/dark-souls-iii-boss-music-made-with-Voicemod.wav" id="7_ebfbv"]
 [ext_resource type="AudioStream" uid="uid://bfbp3efts0d2u" path="res://sfx/BoatSFX/cannon-shot-14799.wav" id="8_g7poh"]
+[ext_resource type="Texture2D" uid="uid://6tde23lkguq2" path="res://assets/Texture_Source/GUI.png" id="9_aw51i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbpvf"]
 atlas = ExtResource("2_18pcm")
@@ -475,10 +476,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8avkp"]
 size = Vector2(48, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpeu5"]
+atlas = ExtResource("9_aw51i")
+region = Rect2(135, 20, 52, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljdm7"]
+atlas = ExtResource("9_aw51i")
+region = Rect2(5, 20, 51, 7)
+
 [node name="Boat" type="CharacterBody2D"]
 script = ExtResource("1_8avkp")
 BombScene = ExtResource("2_ebfbv")
-metadata/_edit_group_ = true
 
 [node name="Water" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
@@ -516,12 +524,23 @@ shape = SubResource("RectangleShape2D_8avkp")
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ebfbv")
-volume_db = -35.0
+volume_db = -40.0
+bus = &"Music"
 
 [node name="CannonSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_g7poh")
-volume_db = -35.0
+volume_db = -40.0
 max_polyphony = 5
+bus = &"SFX"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 28.0
+offset_bottom = -17.0
+value = 100.0
+texture_under = SubResource("AtlasTexture_hpeu5")
+texture_progress = SubResource("AtlasTexture_ljdm7")
 
 [connection signal="timeout" from="BombLauncherTimer" to="." method="_on_bomb_launcher_timer_timeout"]
 [connection signal="timeout" from="LeaveTimer" to="." method="_on_leave_timer_timeout"]
