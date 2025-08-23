@@ -516,12 +516,12 @@ shape = SubResource("RectangleShape2D_8avkp")
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ebfbv")
-volume_db = -40.0
+volume_db = -65.0
 bus = &"Music"
 
 [node name="CannonSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_g7poh")
-volume_db = -40.0
+volume_db = -80.0
 max_polyphony = 5
 bus = &"SFX"
 
